@@ -1,0 +1,166 @@
+*
+{
+    box-sizing: border-box;
+    outline: none;
+}
+body
+{
+    font-family: sans-serif;
+    min-width: 300px;
+    font-size: 1rem;
+}
+a
+{
+    text-decoration: none;
+    color: black;
+}
+nav, section
+{
+    text-align: center;
+}
+h1,h2
+{
+    font-size:unset;
+    font-weight: unset;
+    margin:0;
+}
+h1
+{
+    font-weight:bold ;
+}
+.container
+{
+    padding-left: 40px;
+    padding-right: 40px;
+}
+/********************************************** HEADER ***************************/
+header
+{
+    text-align: center;
+    position: fixed;
+    top: 0;
+    
+}
+.logo
+{
+    background-color: black;
+}
+.logoimg
+{ 
+    width: 100%;
+}
+nav
+{
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    padding: 15px;
+}
+
+/********************************************** SECTION ***************************/
+.allProducts
+{
+    padding-top: 130px;   
+    text-align: center;
+}
+.productCard
+{
+    display: flex;
+    flex-direction: column;
+    margin: 25px;
+
+}
+
+.productCard .imgProduct
+{
+    width: 100%;
+}
+.description
+{
+    margin-top:10px;
+    text-align: left;
+}
+.description h2
+{
+    margin-bottom:5px;  
+}
+.description p
+{
+    margin:0px;  
+}
+
+.scroll-to-top {
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    display: none;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    color: white;
+    background: rgba(52, 58, 64, 0.5);
+    line-height: 45px;
+  }
+  
+  .scroll-to-top:focus, .scroll-to-top:hover {
+    color: white;
+  }
+  
+  .scroll-to-top:hover {
+    background: #343a40;
+  }
+  
+  .scroll-to-top i {
+    font-weight: 800;
+  }
+@media screen and (min-width:768px)
+
+{
+    
+    header
+    {
+        width: 100%;
+    }
+    .logoimg
+    { 
+        width: 40%;
+    }
+
+    .allProducts
+    {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        padding-top: 200px;   
+    }
+
+    .productCard
+    {
+        flex-basis: 25.9%; 
+     
+    }
+
+}
+
+@media screen and (min-width:1025px)
+{
+
+
+    .logoimg
+    { 
+        width:30%;
+    }
+
+    .allProducts
+    {
+     
+        justify-content: flex-center;
+          
+    }
+
+    .productCard
+    {
+        flex-basis: 17.2%; 
+    }
+}

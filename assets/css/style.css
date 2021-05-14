@@ -6,8 +6,10 @@
 body
 {
     font-family: sans-serif;
-    min-width: 300px;
+    min-width: 280px;
+    max-width: 2000px;
     font-size: 1rem;
+    
 }
 a
 {
@@ -28,17 +30,15 @@ h1
 {
     font-weight:bold ;
 }
-.container
-{
-    padding-left: 40px;
-    padding-right: 40px;
-}
+
 /********************************************** HEADER ***************************/
 header
 {
+    width:100%;
     text-align: center;
     position: fixed;
     top: 0;
+ 
     
 }
 .logo
@@ -54,20 +54,26 @@ nav
     display: flex;
     justify-content: space-around;
     background-color: white;
-    padding: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    
 }
 
 /********************************************** SECTION ***************************/
 .allProducts
 {
-    padding-top: 130px;   
-    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top:80px;
+    padding-top: 80px;
 }
 .productCard
 {
     display: flex;
     flex-direction: column;
-    margin: 25px;
+    margin: 35px;
 
 }
 
@@ -113,54 +119,84 @@ nav
   .scroll-to-top i {
     font-weight: 800;
   }
-@media screen and (min-width:768px)
 
+@media screen and (min-width:500px)
 {
-    
-    header
+    .productCard
     {
-        width: 100%;
+        max-width: 350px;
     }
     .logoimg
     { 
         width: 40%;
     }
+    .container
+{
+    padding-left: 40px;
+    padding-right: 40px;
+}
+}
+@media screen and (min-width:768px)
 
+{
+    .productCard
+    {
+        max-width: none;
+    }
+    
+    
+  
     .allProducts
     {
         display: flex;
         flex-direction: row;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-        padding-top: 200px;   
+        flex-wrap: wrap
     }
 
     .productCard
-    {
-        flex-basis: 25.9%; 
-     
+    {  
+        flex-basis: 20.9%; 
     }
 
 }
 
+@media screen and (min-width:900px)
+{
+    .productCard
+    {
+        flex-basis: 23.5%; 
+    }
+}
+
 @media screen and (min-width:1025px)
 {
-
 
     .logoimg
     { 
         width:30%;
     }
 
-    .allProducts
+    .productCard
     {
-     
-        justify-content: flex-center;
-          
+        flex-basis: 17.5%; 
     }
+}
+
+@media screen and (min-width:1500px)
+{
 
     .productCard
     {
-        flex-basis: 17.2%; 
+        flex-basis: 15%; 
+    }
+}
+
+
+@media screen and (min-width:1800px)
+{
+
+    .productCard
+    {
+        flex-basis: 15.9%; 
     }
 }

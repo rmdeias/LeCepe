@@ -11,25 +11,24 @@ body
     font-size: 1rem;
     
 }
+.container{
+    padding: 10px;
+    margin-top: 130px;
+}
 a
 {
     text-decoration: none;
     color: black;
 }
-nav, section
+nav, .frames, .artistLinks
 {
     text-align: center;
 }
-h1,h2
-{
-    font-size:unset;
-    font-weight: unset;
-    margin:0;
+ul{
+   list-style: none;
+   padding: 0;
 }
-h1
-{
-    font-weight:bold ;
-}
+
 
 /********************************************** HEADER ***************************/
 header
@@ -38,8 +37,6 @@ header
     text-align: center;
     position: fixed;
     top: 0;
- 
-    
 }
 .logo
 {
@@ -55,20 +52,28 @@ nav
     justify-content: space-around;
     background-color: white;
     padding-top: 15px;
-    padding-bottom: 15px;
-    
+    padding-bottom: 15px;  
 }
 
 /********************************************** SECTION ***************************/
+
+
 .allProducts
 {
-
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top:80px;
-    padding-top: 80px;
 }
+.allProducts h1,.allProducts h2
+{
+    font-size:unset;
+    margin:0;
+}
+.allProducts h2
+{
+    font-weight:unset ;
+}
+
 .productCard
 {
     display: flex;
@@ -94,7 +99,44 @@ nav
 {
     margin:0px;  
 }
+/***************************************************** Page artist ************************************************/
+.artistArticle{
+    margin-top: 50px;
+}
+.artistImg{
+    width:100%;
+}
+.artistName{
+    text-align: center;
+}
 
+.artistLinks{
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    
+}
+.frames{
+
+    display: flex;
+    flex-direction: column; 
+    
+}
+
+.frames iframe
+{
+
+   width: 100%;
+   max-width: 700px;
+   height: 100%;
+    margin-bottom: 10px; 
+  
+
+}
+
+
+/***************************************************** SCROLL ****************************************************/
 .scroll-to-top {
     position: fixed;
     right: 15px;
@@ -143,8 +185,6 @@ nav
     {
         max-width: none;
     }
-    
-    
   
     .allProducts
     {
@@ -157,6 +197,21 @@ nav
     {  
         flex-basis: 20.9%; 
     }
+    .artistArticle{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around; 
+    }
+  
+
+    .artistArticle div{
+        flex-basis: 45%;
+
+    }
+
+  
+
+
 
 }
 
@@ -171,9 +226,14 @@ nav
 @media screen and (min-width:1025px)
 {
 
+
     .logoimg
     { 
         width:30%;
+    }
+    .container{
+     
+        margin-top: 160px;
     }
 
     .productCard

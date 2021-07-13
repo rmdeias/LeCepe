@@ -1,29 +1,28 @@
-*
-{
+*{
     box-sizing: border-box;
     outline: none;
 }
-body
-{
+
+body{
     font-family: sans-serif;
     min-width: 280px;
-    max-width: 2000px;
-    font-size: 1rem;
-    
+    font-size: 1rem; 
 }
+
 .container{
-    padding: 10px;
-    margin-top: 130px;
+    padding: 5%;
+    margin-top: 100px;
 }
-a
-{
+
+a{
     text-decoration: none;
     color: black;
 }
-nav, .frames, .artistLinks
-{
+
+nav, .frames, .artistLinks{
     text-align: center;
 }
+
 ul{
    list-style: none;
    padding: 0;
@@ -31,23 +30,22 @@ ul{
 
 
 /********************************************** HEADER ***************************/
-header
-{
+header{
     width:100%;
     text-align: center;
     position: fixed;
     top: 0;
 }
-.logo
-{
+
+.logo{
     background-color: black;
 }
-.logoimg
-{ 
+
+.logoimg{ 
     width: 100%;
 }
-nav
-{
+
+nav{
     display: flex;
     justify-content: space-around;
     background-color: white;
@@ -55,84 +53,134 @@ nav
     padding-bottom: 15px;  
 }
 
-/********************************************** SECTION ***************************/
+/********************************************** allProducts SECTION  ***************************/
 
-
-.allProducts
-{
+.allProducts{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.allProducts h1,.allProducts h2
-{
+
+.allProducts h1,.allProducts h2{
     font-size:unset;
     margin:0;
 }
-.allProducts h2
-{
+
+.allProducts h2{
     font-weight:unset ;
 }
 
-.productCard
-{
+.productCard{
     display: flex;
     flex-direction: column;
     margin: 35px;
-
 }
 
-.productCard .imgProduct
-{
+.productCard .imgProduct{
     width: 100%;
 }
-.description
-{
+
+.description{
     margin-top:10px;
     text-align: left;
 }
-.description h2
-{
+
+.description h2{
     margin-bottom:5px;  
 }
-.description p
-{
+
+.description p{
     margin:0px;  
+}
+
+/********************************************* All Band ***********************************************************/
+.allBands{
+    text-align: center;  
+}
+.allBandsArticle article{
+    margin-top: 50px;
+    
+}
+.bandImg{
+    max-width: 300px;
+    border-radius: 10%;
 }
 /***************************************************** Page artist ************************************************/
 .artistArticle{
     margin-top: 50px;
 }
+
 .artistImg{
     width:100%;
 }
+
 .artistName{
     text-align: center;
 }
 
 .artistLinks{
-    
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    
+    justify-content: space-around; 
 }
+
 .frames{
-
     display: flex;
-    flex-direction: column; 
-    
+    flex-direction: column;    
 }
 
-.frames iframe
-{
-
-   width: 100%;
-   max-width: 700px;
-   height: 100%;
+.frames iframe{
+    width: 100%;
+    max-width: 700px;
+    height: 100%;
     margin-bottom: 10px; 
-  
+}
 
+/************************************************** ProductPage************************************************/
+.divImgProduct, .buyButton{
+    text-align: center;
+}
+.buyButton{
+    display: block;
+    background-color: black;
+    color:white;
+    font-weight: bold;
+    padding: 13px;  
+}
+
+.ImgProduct{
+    display: block;
+    width: 100%;
+    
+}
+.refProduct{
+    margin-top: 25px;   
+}
+.refProduct .band{
+    font-size: 20px;
+    margin: 0px;
+}
+.refProduct .title{
+    font-size: 30px;
+    font-weight: normal;
+    margin: 0px 0px 20px 0px;
+}
+.refProduct p{
+    margin: 0px;
+}
+.refProduct .price{
+    margin: 15px 0px 15px 0px;
+    font-size: 25px;
+    font-weight: bold;
+}
+.divBuyButton{
+    margin-top: 30px;
+}
+
+.productPage .frames{
+  
+    margin-top: 30px;
+    
 }
 
 
@@ -148,115 +196,140 @@ nav
     color: white;
     background: rgba(52, 58, 64, 0.5);
     line-height: 45px;
-  }
-  
-  .scroll-to-top:focus, .scroll-to-top:hover {
+}
+
+.scroll-to-top:focus, .scroll-to-top:hover {
     color: white;
-  }
-  
-  .scroll-to-top:hover {
+}
+
+.scroll-to-top:hover {
     background: #343a40;
-  }
-  
-  .scroll-to-top i {
+}
+
+.scroll-to-top i {
     font-weight: 800;
-  }
+}
 
 @media screen and (min-width:500px)
 {
-    .productCard
-    {
+    .productCard{
         max-width: 350px;
     }
-    .logoimg
-    { 
+
+    .logoimg{ 
         width: 40%;
     }
-    .container
-{
-    padding-left: 40px;
-    padding-right: 40px;
-}
-}
-@media screen and (min-width:768px)
 
-{
-    .productCard
-    {
+    
+}
+@media screen and (min-width:768px){
+    .productCard{
         max-width: none;
     }
   
-    .allProducts
-    {
+    .allProducts ,.allBandsArticle{
         display: flex;
         flex-direction: row;
         flex-wrap: wrap
     }
-
-    .productCard
-    {  
-        flex-basis: 20.9%; 
+    
+    .allBandsArticle{
+        justify-content:space-between;
+        padding-left: 20px;
+        padding-right: 20px;
     }
-    .artistArticle{
+    .productCard {  
+        flex-basis: 23%; 
+    }
+
+    .artistArticle {
         display: flex;
         flex-direction: row;
         justify-content: space-around; 
     }
   
-
     .artistArticle div{
         flex-basis: 45%;
 
     }
 
-  
+    .articleProductPage{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        
+    }
 
+    .articleProductPage div{
+        flex-basis: 48%;
+        margin-top: 0px;
+        
+    }
+    
+} 
 
+@media screen and (min-width:900px){
+    .productCard{
+        flex-basis: 24.5%; 
+    }
 
-}
-
-@media screen and (min-width:900px)
-{
-    .productCard
-    {
-        flex-basis: 23.5%; 
+    .bandImg{
+        max-width: 360px;
     }
 }
 
-@media screen and (min-width:1025px)
-{
-
-
-    .logoimg
-    { 
+@media screen and (min-width:1025px){
+    .logoimg{ 
         width:30%;
     }
+
     .container{
-     
         margin-top: 160px;
     }
 
-    .productCard
-    {
+    .productCard{
         flex-basis: 17.5%; 
     }
-}
 
-@media screen and (min-width:1500px)
-{
+    .allBandsArticle{
+        justify-content:flex-start;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
 
-    .productCard
+    .allBandsArticle article
     {
-        flex-basis: 15%; 
+        flex-basis: 50%; 
     }
 }
 
+@media screen and (min-width:1500px){ 
+    .allBandsArticle article{
+        flex-basis: 33.3%; 
+    }
 
-@media screen and (min-width:1800px)
-{
-
-    .productCard
-    {
-        flex-basis: 15.9%; 
+    .productCard{
+        flex-basis: 19.8%; 
     }
 }
+
+@media screen and (min-width:1800px){
+    .productCard{
+        flex-basis: 20%; 
+    }
+
+    .allBandsArticle article{
+        flex-basis: 25%; 
+    }
+
+    .articleProductPage{
+      
+        justify-content: space-around;
+        
+    }
+    .articleProductPage div{
+        flex-basis: 40%;
+        
+    }
+
+}²

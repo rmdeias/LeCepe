@@ -10,8 +10,9 @@ body{
 }
 
 .container{
-    padding: 5%;
-    margin-top: 100px;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-top: 130px;
 }
 
 a{
@@ -301,6 +302,11 @@ nav{
     {
         flex-basis: 50%; 
     }
+
+    .ImgProduct{
+       
+        width: 80%;  
+    }
 }
 
 @media screen and (min-width:1500px){ 
@@ -311,6 +317,8 @@ nav{
     .productCard{
         flex-basis: 19.8%; 
     }
+
+   
 }
 
 @media screen and (min-width:1800px){
@@ -332,4 +340,4 @@ nav{
         
     }
 
-}²
+}

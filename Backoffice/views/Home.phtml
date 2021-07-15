@@ -1,0 +1,36 @@
+    
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+        <meta http-equiv="X-UA-Compatible" content = "ie=edge">
+        <title> <?= $title ?> </title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    </head>
+    
+    <body >
+        <main>
+            <div class="row col-12">
+
+                <div class= "col-md-6" >
+                    <form  action="../Controllers/Connection.php" method="Post" > 
+                        <div class="form-row container">
+                            <legend>Connection</legend> 
+                        
+                                    <label>Mail: </label>
+                                    <input class="form-control" type="email" name="Email" required>
+                                
+                                    <label>Mot de passe: </label>
+                                    <input class="form-control" type="password" name="Password" required>
+                                
+                            <button class="btn btn-primary mt-2" type="submit">Connection</button>
+                        </div>
+                
+                    </form>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

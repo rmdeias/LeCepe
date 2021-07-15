@@ -1,0 +1,47 @@
+<?php include 'headerAdmin.phtml'; ?> 
+
+
+<div class= container>
+    <h1><?= $title ?></h1>
+    <form action ="../Model/add_update.php" method="post">
+        
+        <div class="form-row col-6">
+
+            <?php if(isset($info)): ?> 
+                <label>Password current user: </label>
+                <input class="form-control" type="password" name="Password" required>
+            <?php endif; ?>
+
+            <label>Acess: </label>
+            <input class="form-control" type="text" id="Acess" name="Acess" <?php if(isset($info)): ?> value="<?= $info["Acess"] ?>" <?php endif; ?>>
+            
+            <label>DB_Host: </label>
+            <input class="form-control" type="text" id="DB_Host" name="DB_Host" <?php if(isset($info)): ?> value="<?= $info["DB_Host"] ?>" <?php endif; ?>>
+    
+            <label>DB_User: </label>
+            <input  class="form-control" type="text" id="DB_User" name="DB_User" <?php if(isset($info)): ?> value="<?= $info["DB_User"] ?>" <?php endif; ?>>
+            
+            <label>DB_Pass: </label>
+            <input class="form-control" type="text" id="DB_Pass" name="DB_Pass">
+    
+            <label>DB_Port: </label>
+            <input class="form-control" type="text" id="DB_Port" name="DB_Port" <?php if(isset($info)): ?> value="<?= $info["DB_Port"] ?>" <?php endif; ?>> 
+            
+            <label>DataName: </label>
+            <input class="form-control" type="text" id="DataName" name="DataName" <?php if(isset($info)): ?> value="<?= $info["DataName"] ?>" <?php endif; ?>>
+        
+            <label>Auth: </label>
+            <input class="form-control" type="text" id="Auth" name="Auth" <?php if(isset($info)): ?> value="<?= $info["Auth"] ?>" <?php endif; ?>>
+            
+            <label>Secure: </label>
+            <input class="form-control " type="text" id="Secure" name="Secure" <?php if(isset($info)): ?> value="<?= $info["Secure"] ?>" <?php endif; ?>>
+            
+        </div>
+
+        <?php if(isset($info)): ?> <input  type ="hidden" name="id" value="<?= $info["id"] ?>" >  <?php endif; ?>
+        <button class= "btn btn-success mt-5 mb-5" type= "submit">Valider</button>
+        
+    </form>
+</div>
+          
+<?php include "footer.phtml"; ?> 

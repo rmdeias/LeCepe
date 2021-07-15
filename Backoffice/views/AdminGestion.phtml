@@ -1,0 +1,39 @@
+<?php include 'headerAdmin.phtml'; ?> 
+
+<h1 class="text-center">Gestion des DataBases</h1>
+
+<a href="../Controllers/FormAddUpdate.php" class="btn btn-primary mb-3">Ajouter une DataBase</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Acess</th>
+            <th>DB_Host</th>
+            <th>DB_User</th>
+            <th>DB_Pass</th>
+            <th>DB_Port</th>
+            <th>DataName</th>
+            <th>Auth</th>
+            <th>Secure</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($infos as $info): ?>
+            <tr>
+                <td><?= $info["Acess"] ?></td>
+                <td><?= $info["DB_Host"] ?></td>
+                <td><?= $info["DB_User"] ?></td>
+                <td><?= $info["DB_Pass"] ?></td>
+                <td><?= $info["DB_Port"] ?></td>
+                <td><?= $info["DataName"] ?></td>
+                <td><?= $info["Auth"] ?></td>
+                <td><?= $info["Secure"] ?></td>
+                <td><a class="btn btn-info" href="../Controllers/FormAddUpdate.php?id=<?= $info["id"]  ?>"><i class="fas fa-pen-fancy"></i></a></td>
+                <td><a class="delete btn btn-danger " id="<?= $info["id"]  ?>" href="../Controllers/FormDeleteConfirmation.php?id=<?= $info["id"]  ?>"><i class="fas fa-trash"></i></a></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+    
+<?php include 'footer.phtml'; ?> 

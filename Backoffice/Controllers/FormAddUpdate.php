@@ -1,7 +1,7 @@
 <?php
 session_start();
-use Controllers\Manager\AcessManager;
-require_once 'Manager/AcessManager.php';
+use Controllers\Manager\ProductManager;
+require_once 'Manager/ProductManager.php';
 
 // empeche de revenir sur cette page apres déconnection
 if (isset($_SESSION['admin'])) {
@@ -10,18 +10,18 @@ if (isset($_SESSION['admin'])) {
         
         $title = "Update Data";
         
-        $readInfoForUpdate = new AcessManager('db_info');
+        $readInfoForUpdate = new ProductManager('products');
         $info = $readInfoForUpdate->readById('*',$_GET["id"]);
     }
     else{
         $title = "Add Data";  
     }
 
-    include "../views/FormAddUpdate.phtml";
+    include "../views/FormAddUpdateProducts.phtml";
 }
 else{
     http_response_code(404);
-    header('Location: Home.php');
+    header('Location: ../../index.php');
     exit;
 }
 

@@ -1,5 +1,5 @@
 <?php
-namespace App\Entity;
+namespace Controllers\Entity;
 
 
 class Product
@@ -69,6 +69,12 @@ class Product
         return $this->id;
     }
 
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
     public function getTitle(): ?string
     {
         return $this->title;

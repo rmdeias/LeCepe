@@ -19,7 +19,7 @@ if (isset($admin["Email"]) && isset($admin["adminPassword"])) {
     ];
 
     if ($admin["Email"] === $_POST["Email"] && password_verify($_POST["Password"], $admin["adminPassword"])) {
-        header('Location: AdminGestion.php');
+        header('Location: ProductGestion.php');
         exit;
     } else {
         die("Informations incorrectes");

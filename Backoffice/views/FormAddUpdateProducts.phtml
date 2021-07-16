@@ -1,0 +1,45 @@
+<?php include 'headerAdmin.phtml'; ?> 
+
+
+<div class= container>
+    <h1><?= $title ?></h1>
+    <form action ="../Model/add_update_product.php" method="post">
+        
+        <div class="form-row col-6">
+
+            <label>Image: </label>
+            <input class="form-control" type="text" id="image" name="image" <?php if(isset($info)): ?> value="<?= $info["image"] ?>" <?php endif; ?>>
+            
+            <label>Image Aternative: </label>
+            <input class="form-control" type="text" id="imageAlt" name="imageAlt" <?php if(isset($info)): ?> value="<?= $info["imageAlt"] ?>" <?php endif; ?>>
+    
+            <label>Titre: </label>
+            <input  class="form-control" type="text" id="title" name="title" <?php if(isset($info)): ?> value="<?= $info["title"] ?>" <?php endif; ?>>
+            
+            <label>Date: </label>
+            <input class="form-control" type="text" id="dateSortie" name="dateSortie" <?php if(isset($info)): ?> value="<?= $info["dateSortie"] ?>" <?php endif; ?>>
+    
+            <label>Type: </label>
+            <input class="form-control" type="text" id="type" name="type" <?php if(isset($info)): ?> value="<?= $info["type"] ?>" <?php endif; ?>> 
+            
+            <label>Prix: </label>
+            <input class="form-control" type="text" id="price" name="price" <?php if(isset($info)): ?> value="<?= $info["price"] ?>" <?php endif; ?>>
+        
+            <label>dispo: </label>
+            <input class="form-control" type="text" id="dispo" name="dispo" <?php if(isset($info)): ?> value="<?= $info["dispo"] ?>" <?php endif; ?>>
+            
+            <label>	Description: </label>
+            <input class="form-control " type="text" id="description" name="description" <?php if(isset($info)): ?> value="<?= $info["description"] ?>" <?php endif; ?>>
+            
+            <label>	Lien Bandcamp: </label>
+            <input class="form-control " type="text" id="linkBandcamp" name="linkBandcamp" <?php if(isset($info)): ?> value="<?= $info["linkBandcamp"] ?>" <?php endif; ?>>
+            
+        </div>
+
+        <?php if(isset($info)): ?> <input   name="id" value="<?= $info["id"] ?>" >  <?php endif; ?>
+        <button class= "btn btn-success mt-5 mb-5" type= "submit">Valider</button>
+        
+    </form>
+</div>
+          
+<?php include "footer.phtml"; ?> 

@@ -3,7 +3,7 @@
 <h1 class="text-center">Gestion des Groupes</h1>
 
 <a href="../Controllers/FormAddUpdateBands.php" class="btn btn-primary mb-3">Ajouter un groupe</a>
-<table class="table">
+<table class="table text-center">
     <thead>
         <tr>
             <th>Nom</th>
@@ -22,7 +22,7 @@
         <?php foreach ($infos as $info): ?>
             <tr>
                 <td><?= $info["name"] ?></td>
-                <td><?= $info["imageBand"] ?></td>
+                <td><img class="img-thumbnail" src=<?= "../../assets/images/bands/".$info["slug"]."/".$info["imageBand"] ?> ></td>
                 <td><?= $info["description"] ?></td>
                 <td><?= $info["linkFB"] ?></td>
                 <td><?= $info["linkInsta"] ?></td>

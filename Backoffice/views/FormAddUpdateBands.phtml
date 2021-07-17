@@ -3,7 +3,7 @@
 
 <div class= container>
     <h1><?= $title ?></h1>
-    <form action ="../Model/add_update_band.php" method="post">
+    <form action ="../Model/add_update_band.php" method="post" enctype="multipart/form-data">
         
         <div class="form-row col-6">
 
@@ -11,7 +11,7 @@
             <input  class="form-control" type="text" id="name" name="name" <?php if(isset($info)): ?> value="<?= $info["name"] ?>" <?php endif; ?>>
 
             <label>Image Band: </label>
-            <input class="form-control" type="text" id="imageBand" name="imageBand" <?php if(isset($info)): ?> value="<?= $info["imageBand"] ?>" <?php endif; ?>>
+            <input class="form-control"  type="file" id="imageBand" name="imageBand" <?php if(isset($info)): ?> value="<?= $info["imageBand"] ?>" <?php endif; ?>>
             
             <label>Lien Facebook: </label>
             <input class="form-control" type="text" id="linkFB" name="linkFB" <?php if(isset($info)): ?> value="<?= $info["linkFB"] ?>" <?php endif; ?>>

@@ -1,0 +1,40 @@
+<?php include 'headerAdmin.phtml'; ?> 
+
+<h1 class="text-center">Gestion des Groupes</h1>
+
+<a href="../Controllers/FormAddUpdateBands.php" class="btn btn-primary mb-3">Ajouter un groupe</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Image Band</th>
+            <th>Description</th>
+            <th>Lien Facebook</th>
+            <th>Lien Insta</th>
+            <th>Lien Youtube</th>
+            <th>Lien BandCamp</th>
+            <th>iframe Youtube</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($infos as $info): ?>
+            <tr>
+                <td><?= $info["name"] ?></td>
+                <td><?= $info["imageBand"] ?></td>
+                <td><?= $info["description"] ?></td>
+                <td><?= $info["linkFB"] ?></td>
+                <td><?= $info["linkInsta"] ?></td>
+                <td><?= $info["linkYoutube"] ?></td>
+                <td><?= $info["linkBandcamp"] ?></td>
+                <td><?= $info["iframeYoutube"] ?></td>
+                
+                <td><a class="btn btn-info" href="../Controllers/FormAddUpdateBands.php?id=<?= $info["id"]  ?>"><i class="fas fa-pen-fancy"></i></a></td>
+                <td><a class="delete btn btn-danger " id="<?= $info["id"]  ?>" href="../Model/delete_band.php?id=<?= $info["id"]  ?>"><i class="fas fa-trash"></i></a></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+    
+<?php include 'footer.phtml'; ?> 

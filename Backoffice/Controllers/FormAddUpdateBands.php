@@ -1,23 +1,23 @@
 <?php
 session_start();
-use Controllers\Manager\ProductManager;
-require_once 'Manager/ProductManager.php';
+use Controllers\Manager\BandManager;
+require_once 'Manager/BandManager.php';
 
 // empeche de revenir sur cette page apres déconnection
 if (isset($_SESSION['admin'])) {
     
     if(isset($_GET["id"])) { 
         
-        $title = "Update Data";
+        $title = "Update Band";
         
-        $readInfoForUpdate = new ProductManager('products');
+        $readInfoForUpdate = new BandManager('bands');
         $info = $readInfoForUpdate->readById('*',$_GET["id"]);
     }
     else{
-        $title = "Add Data";  
+        $title = "Add Band";  
     }
 
-    include "../views/FormAddUpdateProducts.phtml";
+    include "../views/FormAddUpdateBands.phtml";
 }
 else{
     http_response_code(404);

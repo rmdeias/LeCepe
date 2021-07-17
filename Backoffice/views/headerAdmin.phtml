@@ -14,7 +14,7 @@
         <header >
 
             <div class = "text-right">   
-                <?php if($title === "Gestion des Produits"): ?> 
+                <?php if($title === "Gestion des Produits" || $title === "Gestion des Groupes"): ?> 
                 <a class="btn btn-danger" href="../Controllers/Deconnection.php">Déconnection</a>
                 <?php endif; ?>
             </div>
@@ -26,9 +26,9 @@
 
                 <div class="col-md-2 m-1">
                     <ul>
-                        <li><a href="AdminGestion.php">Bands</a></li>
-                        <li><a href="AdminGestion.php">Products</a></li>
-                        <li><a href="AdminGestion.php">Events</a></li>
+                        <li><a href="BandGestion.php">Bands</a></li>
+                        <li><a href="ProductGestion.php">Products</a></li>
+                        <li><a href="">Events</a></li>
                     </ul>
                 </div>
         

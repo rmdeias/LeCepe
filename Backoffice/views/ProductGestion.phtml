@@ -2,7 +2,7 @@
 
 <h1 class="text-center">Gestion des Produits</h1>
 
-<a href="../Controllers/FormAddUpdate.php" class="btn btn-primary mb-3">Ajouter un produit</a>
+<a href="../Controllers/FormAddUpdateProducts.php" class="btn btn-primary mb-3">Ajouter un produit</a>
 <table class="table">
     <thead>
         <tr>
@@ -30,7 +30,7 @@
                 <td><?= $info["linkBandcamp"] ?></td>
                 <td><?= $info["dispo"] ?></td>
                 
-                <td><a class="btn btn-info" href="../Controllers/FormAddUpdate.php?id=<?= $info["id"]  ?>"><i class="fas fa-pen-fancy"></i></a></td>
+                <td><a class="btn btn-info" href="../Controllers/FormAddUpdateProducts.php?id=<?= $info["id"]  ?>"><i class="fas fa-pen-fancy"></i></a></td>
                 <td><a class="delete btn btn-danger " id="<?= $info["id"]  ?>" href="../Model/delete_product.php?id=<?= $info["id"]  ?>"><i class="fas fa-trash"></i></a></td>
             </tr>
         <?php endforeach; ?>

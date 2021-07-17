@@ -1,0 +1,42 @@
+<?php include 'headerAdmin.phtml'; ?> 
+
+
+<div class= container>
+    <h1><?= $title ?></h1>
+    <form action ="../Model/add_update_band.php" method="post">
+        
+        <div class="form-row col-6">
+
+            <label>Nom: </label>
+            <input  class="form-control" type="text" id="name" name="name" <?php if(isset($info)): ?> value="<?= $info["name"] ?>" <?php endif; ?>>
+
+            <label>Image Band: </label>
+            <input class="form-control" type="text" id="imageBand" name="imageBand" <?php if(isset($info)): ?> value="<?= $info["imageBand"] ?>" <?php endif; ?>>
+            
+            <label>Lien Facebook: </label>
+            <input class="form-control" type="text" id="linkFB" name="linkFB" <?php if(isset($info)): ?> value="<?= $info["linkFB"] ?>" <?php endif; ?>>
+    
+            <label>Lien Insta: </label>
+            <input class="form-control" type="text" id="linkInsta" name="linkInsta" <?php if(isset($info)): ?> value="<?= $info["linkInsta"] ?>" <?php endif; ?>> 
+            
+            <label>Lien Youtube: </label>
+            <input class="form-control" type="text" id="linkYoutube" name="linkYoutube" <?php if(isset($info)): ?> value="<?= $info["linkYoutube"] ?>" <?php endif; ?>>
+        
+            <label>	Description: </label>
+            <input class="form-control " type="text" id="description" name="description" <?php if(isset($info)): ?> value="<?= $info["description"] ?>" <?php endif; ?>>
+            
+            <label>	Lien Bandcamp: </label>
+            <input class="form-control " type="text" id="linkBandcamp" name="linkBandcamp" <?php if(isset($info)): ?> value="<?= $info["linkBandcamp"] ?>" <?php endif; ?>>
+            
+            <label>Iframe Youtube: </label>
+            <input class="form-control" type="text" id="iframeYoutube" name="iframeYoutube" <?php if(isset($info)): ?> value="<?= $info["iframeYoutube"] ?>" <?php endif; ?>>
+
+        </div>
+
+        <?php if(isset($info)): ?> <input type="hidden"   name="id" value="<?= $info["id"] ?>" >  <?php endif; ?>
+        <button class= "btn btn-success mt-5 mb-5" type= "submit">Valider</button>
+        
+    </form>
+</div>
+          
+<?php include "footer.phtml"; ?> 

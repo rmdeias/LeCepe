@@ -12,7 +12,8 @@ if (isset($_SESSION["admin"])) {
     $readAllInfo = new BandManager('bands');
     $infos = $readAllInfo->readAll();
 
-    include "../views/BandGestion.phtml";
+    require "../views/BandGestion.phtml";
+    require "../views/Layout.phtml";
 }
 else{
     http_response_code(404);

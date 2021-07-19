@@ -12,7 +12,8 @@ if (isset($_SESSION["admin"])) {
     $readAllInfo = new ProductManager('products');
     $infos = $readAllInfo->readAll();
 
-    include "../views/ProductGestion.phtml";
+    require "../views/ProductGestion.phtml";
+    require "../views/Layout.phtml";
 }
 else{
     http_response_code(404);

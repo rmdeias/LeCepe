@@ -5,40 +5,14 @@
                 <h1>THE BAND</h1>
                 
                 <div class="allBandsArticle" >
-
+                <?php foreach ($bands as $band): ?>
                     <article>
               
-                        <a href="Band"><img class ="bandImg" src="./assets/images/BabeRainbow_1024x1024.webp"></a>
-                        <h4>Deedee & The Abracadabras</h4>
+                        <a href="Band&name=<?= $band["slug"]."-".$band["id"] ?>" ><img class ="bandImg" src="./assets/images/bands/<?= $band["slug"]."/".$band["imageBand"] ?>"></a>
+                        <h4><?= $band["name"] ?></h4>
                     
                     </article>
-                
-                    <article>
-                        
-                        <a href=""><img class ="bandImg" src="./assets/images/BabeRainbow_1024x1024.webp"></a>
-                        <h4>THE BAND</h4>
-                        
-                    </article>
-                    <article>
-                        
-                        <a href=""><img class ="bandImg" src="./assets/images/BabeRainbow_1024x1024.webp"></a>
-                        <h4>THE BAND</h4>
-                    
-                    </article>
-                    <article>
-                    
-                        <a href=""><img class ="bandImg" src="./assets/images/BabeRainbow_1024x1024.webp"></a>
-                        <h4>Deedee & The Abracadabras</h4>
-                    
-                    </article>
-                
-                    <article>
-                    
-                        <a href=""><img class ="bandImg" src="./assets/images/BabeRainbow_1024x1024.webp"></a>
-                        <h4>THE BAND</h4>
-                    
-                    </article>
-           
+                <?php endforeach; ?>
 
                 </div>
             

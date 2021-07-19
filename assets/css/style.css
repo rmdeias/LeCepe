@@ -6,7 +6,7 @@
 body{
     font-family: sans-serif;
     min-width: 280px;
-    font-size: 1rem; 
+    font-size: 1rem;
 }
 
 .container{
@@ -125,6 +125,7 @@ nav{
     justify-content: space-around; 
 }
 
+
 .frames{
     display: flex;
     flex-direction: column;    
@@ -135,6 +136,18 @@ nav{
     max-width: 700px;
     height: 100%;
     margin-bottom: 10px; 
+}
+.fab{
+    font-size:40px;
+}
+.facebook{
+    color: #4267B2;
+}
+.youtube{
+    color: #FF0000;
+}
+.insta{
+    width:40px;
 }
 
 /************************************************** ProductPage************************************************/

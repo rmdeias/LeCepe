@@ -1,4 +1,4 @@
-<?php include 'headerAdmin.phtml'; ?> 
+<?php ob_start() ?>
 
 <h1 class="text-center">Gestion des Produits</h1>
 
@@ -37,4 +37,4 @@
     </tbody>
 </table>
     
-<?php include 'footer.phtml'; ?> 
+<?php $content = ob_get_clean(); ?>

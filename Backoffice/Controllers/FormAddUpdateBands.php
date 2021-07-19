@@ -17,7 +17,8 @@ if (isset($_SESSION['admin'])) {
         $title = "Add Band";  
     }
 
-    include "../views/FormAddUpdateBands.phtml";
+    require "../views/FormAddUpdateBands.phtml";
+    require "../views/Layout.phtml";
 }
 else{
     http_response_code(404);

@@ -17,7 +17,8 @@ if (isset($_SESSION['admin'])) {
         $title = "Add Product";  
     }
 
-    include "../views/FormAddUpdateProducts.phtml";
+    require "../views/FormAddUpdateProducts.phtml";
+    require "../views/Layout.phtml";
 }
 else{
     http_response_code(404);

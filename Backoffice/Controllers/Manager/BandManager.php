@@ -156,4 +156,23 @@ class BandManager
         $this->query->execute();
       
     }
+
+    public function updateNoPhoto(Band &$entity)
+    {
+        $this->query = $this->pdo->prepare('UPDATE ' .$this->getTable(). ' SET name = :name, description = :description, 
+        linkFB = :linkFB, linkInsta = :linkInsta, linkInsta = :linkInsta, linkYoutube = :linkYoutube, linkBandcamp = :linkBandcamp, iframeYoutube = :iframeYoutube, slug = :slug WHERE id = :id');
+
+        $this->query->bindValue(':id',$entity->getId(), PDO::PARAM_INT);
+        $this->query->bindValue(':name',$entity->getName(), PDO::PARAM_STR);
+        $this->query->bindValue(':description',$entity->getDescription(), PDO::PARAM_STR);
+        $this->query->bindValue(':linkFB',$entity->getLinkFB(), PDO::PARAM_STR);
+        $this->query->bindValue(':linkInsta',$entity->getLinkInsta(), PDO::PARAM_STR);
+        $this->query->bindValue(':linkYoutube',$entity->getLinkYoutube(), PDO::PARAM_STR);
+        $this->query->bindValue(':linkBandcamp',$entity->getLinkBandcamp(), PDO::PARAM_STR);
+        $this->query->bindValue(':iframeYoutube',$entity->getIframeYoutube(), PDO::PARAM_STR);
+        $this->query->bindValue(':slug',$entity->getSlug(), PDO::PARAM_STR);
+
+        $this->query->execute();
+      
+    }
 }

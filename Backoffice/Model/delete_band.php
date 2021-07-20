@@ -1,20 +1,22 @@
 <?php
 session_start();
+require_once '../Controllers/Manager/ReadDeleteManager.php';
 require "./upload_functions.php";
-require_once '../Controllers/Manager/BandManager.php';
-use Controllers\Manager\BandManager;
-    
-    //Delete en database
-    $deleteData = new BandManager('bands');
-    $info = $deleteData->deleteById();
+use Controllers\Manager\ReadDeleteManager;
 
-    //Delete dossier artiste
-    $checkForDelete = new BandManager('bands');
-    $check = $checkForDelete->readById("slug",$_POST["id"]);
-    deleteDirectory("../../assets/images/bands/".$check["slug"]);
 
-    header('Location: ../Controllers/BandGestion.php');
-    exit();
+//Delete en dossier  
+$checkForDelete = new ReadDeleteManager('bands');
+$check = $checkForDelete->readById("slug",$_GET["id"]);
+deleteDirectory("../../assets/images/bands/".$check["slug"]);
+
+
+//Delete en database
+$deleteData = new ReadDeleteManager('bands');
+$info = $deleteData->deleteById();
+
+header('Location: ../Controllers/BandGestion.php');
+exit();
 
 
 ?>

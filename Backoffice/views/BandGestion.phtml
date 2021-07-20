@@ -6,13 +6,13 @@
     <thead>
         <tr>
             <th>Nom</th>
-            <th>Image Band</th>
+            <th>Image Groupe</th>
             <th>Description</th>
             <th>Lien Facebook</th>
             <th>Lien Insta</th>
             <th>Lien Youtube</th>
-            <th>Lien BandCamp</th>
-            <th>iframe Youtube</th>
+            <th>Iframe BandCamp</th>
+            <th>Iframe Youtube</th>
             <th>Modifier</th>
             <th>Supprimer</th>
         </tr>
@@ -27,7 +27,7 @@
                 <td><?= $info["linkFB"] ?></td>
                 <td><?= $info["linkInsta"] ?></td>
                 <td><?= $info["linkYoutube"] ?></td>
-                <td><?= $info["linkBandcamp"] ?></td>
+                <td><?= substr($info["iframeBandcamp"] , 0, 45)?>...</td>
                 <td><?= substr($info["iframeYoutube"] , 0, 45)?>...</td>
                 
                 <td><a class="btn btn-info" href="../Controllers/FormAddUpdateBands.php?id=<?= $info["id"]  ?>"><i class="fas fa-pen-fancy"></i></a></td>

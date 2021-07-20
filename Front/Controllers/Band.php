@@ -1,12 +1,12 @@
 <?php
-use Controllers\Manager\BandManager;
-require_once 'Backoffice/Controllers/Manager/BandManager.php';
+use Controllers\Manager\ReadDeleteManager;
+require_once 'Backoffice/Controllers/Manager/ReadDeleteManager.php';
 
     if(isset($_GET["name"])) { 
 
         $id = explode("-",$_GET["name"]);
      
-        $readInfo = new BandManager('bands');
+        $readInfo = new ReadDeleteManager('bands');
         $info = $readInfo->readById('*',$id[1]);
         $title = $info["name"];
 

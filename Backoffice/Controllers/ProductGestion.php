@@ -1,17 +1,16 @@
 <?php
 session_start();
-
-require_once 'Manager/ProductManager.php';
-use Controllers\Manager\ProductManager;
+use Controllers\Manager\ReadDeleteManager;
+require_once 'Manager/ReadDeleteManager.php';
 
 // empeche de revenir sur cette page apres déconnection
 if (isset($_SESSION["admin"])) {
      
     $title = "Gestion des Produits";
 
-    $readAllInfo = new ProductManager('products');
-    $infos = $readAllInfo->readAll();
-
+    $readAllInfo = new ReadDeleteManager('products');
+    $infos = $readAllInfo->read('*');
+    
     require "../views/ProductGestion.phtml";
     require "../views/Layout.phtml";
 }

@@ -90,34 +90,6 @@ class ProductManager
         return $this->column;
     }
 
-    public function readAll()
-    {
-        $this->query=  $this->pdo->prepare('SELECT * from ' . $this->getTable());
-        $this->query->execute();
-        return  $this->query->fetchAll(PDO::FETCH_ASSOC);
-    }
-    
-    public function readById($column, $id)
-    {
-        $column = $this->setColumn($column);
-        
-        $this->query=  $this->pdo->prepare('SELECT '. $this->getColumn() . ' from ' .$this->getTable() . ' WHERE id = :id');
-        
-        $this->query->bindValue(':id',$id, PDO::PARAM_INT);
-        
-        $this->query->execute();
-
-        return  $this->query->fetch(PDO::FETCH_ASSOC);
-    }
-
-    public function deleteById()
-    {
-        $this->query=  $this->pdo->prepare('DELETE from ' .$this->getTable() . ' WHERE id = :id');
-       
-        $this->query->bindValue(':id',$_GET["id"], PDO::PARAM_INT);
-        
-        $this->query->execute();
-    }
 
     public function create(Product &$entity)
     {

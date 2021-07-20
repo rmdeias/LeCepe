@@ -2,16 +2,30 @@
 
 <div class= container>
     <h1><?= $title ?></h1>
-    <form action ="../Model/add_update_product.php" method="post">
+    <form action ="../Model/add_update_product.php" method="post" enctype="multipart/form-data">
         
         <div class="form-row col-6">
 
             <label>Image: </label>
-            <input class="form-control" type="text" id="image" name="image" <?php if(isset($info)): ?> value="<?= $info["image"] ?>" <?php endif; ?>>
+            <input class="form-control" type="file" id="image" name="image" <?php if(isset($info)): ?> value="<?= $info["image"] ?>" <?php endif; ?>>
             
             <label>Image Aternative: </label>
-            <input class="form-control" type="text" id="imageAlt" name="imageAlt" <?php if(isset($info)): ?> value="<?= $info["imageAlt"] ?>" <?php endif; ?>>
+            <input class="form-control" type="file" id="imageAlt" name="imageAlt" <?php if(isset($info)): ?> value="<?= $info["imageAlt"] ?>" <?php endif; ?>>
     
+
+                <label>Groupe: </label>
+                <select name="bands" id="bands" class="form-control" required>
+
+                        <option value="">Selectionner un groupe</option>
+                        <?php foreach ($listeBands as $band): ?>
+                            <option value="<?= $band["id"] ?>" <?php if (isset($listePhoto) && $listePhoto["id_Categorie"] == $nomCategorie["id"]): ?> selected <?php endif; ?>><?= $band["name"] ?></option>
+                        <?php endforeach; ?>
+
+                </select>
+
+
+
+
             <label>Titre: </label>
             <input  class="form-control" type="text" id="title" name="title" <?php if(isset($info)): ?> value="<?= $info["title"] ?>" <?php endif; ?>>
             

@@ -1,16 +1,21 @@
 <?php
 session_start();
-use Controllers\Manager\ProductManager;
-require_once 'Manager/ProductManager.php';
+use Controllers\Manager\ReadDeleteManager;
+require_once 'Manager/ReadDeleteManager.php';
 
 // empeche de revenir sur cette page apres déconnection
 if (isset($_SESSION['admin'])) {
+    
+    $read = new ReadDeleteManager('bands');
+    $listeBands = $read->read('id,name');
+    
+    
     
     if(isset($_GET["id"])) { 
         
         $title = "Update Product";
         
-        $readInfoForUpdate = new ProductManager('products');
+        $readInfoForUpdate = new ReadDeleteManager('products');
         $info = $readInfoForUpdate->readById('*',$_GET["id"]);
     }
     else{

@@ -1,16 +1,16 @@
 <?php
 session_start();
 
-require_once 'Manager/BandManager.php';
-use Controllers\Manager\BandManager;
+require_once 'Manager/ReadDeleteManager.php';
+use Controllers\Manager\ReadDeleteManager;
 
 // empeche de revenir sur cette page apres déconnection
 if (isset($_SESSION["admin"])) {
      
     $title = "Gestion des Groupes";
 
-    $readAllInfo = new BandManager('bands');
-    $infos = $readAllInfo->readAll();
+    $readAllInfo = new ReadDeleteManager('bands');
+    $infos = $readAllInfo->read('*');
 
     require "../views/BandGestion.phtml";
     require "../views/Layout.phtml";

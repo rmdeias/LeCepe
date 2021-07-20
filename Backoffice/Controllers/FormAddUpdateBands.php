@@ -1,7 +1,7 @@
 <?php
 session_start();
-use Controllers\Manager\BandManager;
-require_once 'Manager/BandManager.php';
+use Controllers\Manager\ReadDeleteManager;
+require_once 'Manager/ReadDeleteManager.php';
 
 // empeche de revenir sur cette page apres déconnection
 if (isset($_SESSION['admin'])) {
@@ -10,7 +10,7 @@ if (isset($_SESSION['admin'])) {
         
         $title = "Update Band";
         
-        $readInfoForUpdate = new BandManager('bands');
+        $readInfoForUpdate = new ReadDeleteManager('bands');
         $info = $readInfoForUpdate->readById('*',$_GET["id"]);
     }
     else{

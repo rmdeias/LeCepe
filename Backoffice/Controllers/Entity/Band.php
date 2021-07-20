@@ -41,7 +41,7 @@ class Band
     /**
      type="string", length=255
      */
-    private $linkBandcamp;
+    private $iframeBandcamp;
 
     /**
      type="string", length=255
@@ -138,14 +138,14 @@ class Band
         return $this;
     }
 
-    public function getLinkBandcamp(): ?string
+    public function getIframeBandcamp(): ?string
     {
-        return $this->linkBandcamp;
+        return $this->iframeBandcamp;
     }
 
-    public function setLinkBandcamp(string $linkBandcamp): self
+    public function setIframeBandcamp(string $iframeBandcamp): self
     {
-        $this->linkBandcamp = $linkBandcamp;
+        $this->iframeBandcamp = $iframeBandcamp;
 
         return $this;
     }

@@ -40,7 +40,7 @@ if (strpos(htmlspecialchars($_POST["name"]),"/") == false){
         
         // Récupére les datas du Band
         $checkForUpdate = new ReadDeleteManager('bands');
-        $check = $checkForUpdate->readById("name,slug,imageBand",$_POST["id"]);
+        $check = $checkForUpdate->readById("name,bandSlug,imageBand",$_POST["id"]);
 
         $updateInfo = new BandManager('bands');
         $entity->setId($_POST["id"]);
@@ -49,12 +49,12 @@ if (strpos(htmlspecialchars($_POST["name"]),"/") == false){
         if($check["name"] != $_POST["name"]){
             //copie dossier
             copyDirectory(
-                "../../assets/images/bands/".$check["slug"],
+                "../../assets/images/bands/".$check["bandSlug"],
                 "../../assets/images/bands/". $entity->getSlug()
             ); 
         
             //suprimme l'ancien dossier
-            deleteDirectory("../../assets/images/bands/".$check["slug"]);
+            deleteDirectory("../../assets/images/bands/".$check["bandSlug"]);
         }
         
         if( $_FILES["imageBand"]["name"] !== ""){ 
@@ -65,7 +65,7 @@ if (strpos(htmlspecialchars($_POST["name"]),"/") == false){
                 deleteDirectory("../../assets/images/bands/".$entity->getSlug()."/".$check["imageBand"]);
             }
         
-            uploadPhoto($path);
+            uploadPhoto($path,"imageBand");
             $updateInfo->update($entity); 
         }
         // Si aucune saisie pour photo
@@ -77,7 +77,7 @@ if (strpos(htmlspecialchars($_POST["name"]),"/") == false){
     // Creation d'une nouvelle ligne 
     else{
         
-        uploadPhoto($path);
+        uploadPhoto($path,"imageBand");
         $insertInfo = new BandManager('bands');
         $insertInfo->create($entity);
     }

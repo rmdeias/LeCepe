@@ -37,7 +37,7 @@ class Product
     /**
      type="string", length=255
      */
-    private $linkProduct;
+    private $iframeBandcamp;
 
     /**
      type="string", length=255
@@ -135,14 +135,14 @@ class Product
         return $this;
     }
 
-    public function getLinkProduct(): ?string
+    public function getIframeBandcamp(): ?string
     {
-        return $this->linkProduct;
+        return $this->iframeBandcamp;
     }
 
-    public function setLinkProduct(string $linkProduct): self
+    public function setIframeBandcamp(string $iframeBandcamp): self
     {
-        $this->linkProduct = $linkProduct;
+        $this->iframeBandcamp = $iframeBandcamp;
 
         return $this;
     }

@@ -9,8 +9,8 @@ if (isset($_SESSION["admin"])) {
     $title = "Gestion des Produits";
 
     $readAllInfo = new ReadDeleteManager('products');
-    $infos = $readAllInfo->read('*');
-    
+    $infos = $readAllInfo->readInnerJoin('products.*,bands.name,bands.bandSlug');
+  
     require "../views/ProductGestion.phtml";
     require "../views/Layout.phtml";
 }

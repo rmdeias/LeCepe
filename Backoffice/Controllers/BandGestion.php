@@ -11,7 +11,7 @@ if (isset($_SESSION["admin"])) {
 
     $readAllInfo = new ReadDeleteManager('bands');
     $infos = $readAllInfo->read('*');
-
+ 
     require "../views/BandGestion.phtml";
     require "../views/Layout.phtml";
 }

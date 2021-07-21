@@ -7,8 +7,8 @@ use Controllers\Manager\ReadDeleteManager;
 
 //Delete en dossier  
 $checkForDelete = new ReadDeleteManager('bands');
-$check = $checkForDelete->readById("slug",$_GET["id"]);
-deleteDirectory("../../assets/images/bands/".$check["slug"]);
+$check = $checkForDelete->readById("bandSlug",$_GET["id"]);
+deleteDirectory("../../assets/images/bands/".$check["bandSlug"]);
 
 
 //Delete en database

@@ -93,8 +93,8 @@ class ProductManager
 
     public function create(Product &$entity)
     {
-        $this->query = $this->pdo->prepare('INSERT INTO ' .$this->getTable() . ' (image,imageAlt, title, dateSortie,type, price, dispo, description, linkBandcamp, slug, id_band) 
-        Values (:image,:imageAlt, :title, :dateSortie,:type, :price, :dispo, :description, :linkBandcamp, :slug, :id_band)');
+        $this->query = $this->pdo->prepare('INSERT INTO ' .$this->getTable() . ' (image,imageAlt, title, dateSortie,type, price, dispo, description, iframeBandcamp, slug, id_band) 
+        Values (:image,:imageAlt, :title, :dateSortie,:type, :price, :dispo, :description, :iframeBandcamp, :slug, :id_band)');
         
         $this->query->bindValue(':image',$entity->getImage(), PDO::PARAM_STR);
         $this->query->bindValue(':imageAlt',$entity->getImageAlt(), PDO::PARAM_STR);
@@ -104,20 +104,39 @@ class ProductManager
         $this->query->bindValue(':price',$entity->getPrice(), PDO::PARAM_STR);
         $this->query->bindValue(':dispo',$entity->getDispo(), PDO::PARAM_STR);
         $this->query->bindValue(':description',$entity->getDescription(), PDO::PARAM_STR);
-        $this->query->bindValue(':linkBandcamp',$entity->getLinkProduct(), PDO::PARAM_STR);
+        $this->query->bindValue(':iframeBandcamp',$entity->getIframeBandcamp(), PDO::PARAM_STR);
         $this->query->bindValue(':slug',$entity->getSlug(), PDO::PARAM_STR);
         $this->query->bindValue(':id_band',$entity->getIdBand(), PDO::PARAM_INT);
 
         $this->query->execute();
     }
 
-    public function update(Product &$entity)
+    public function updateImage(Product &$entity)
     {
-        $this->query = $this->pdo->prepare('UPDATE ' .$this->getTable(). ' SET image = :image, imageAlt = :imageAlt, title = :title, 
-        dateSortie = :dateSortie, type = :type, price = :price, dispo = :dispo, description = :description, linkBandcamp = :linkBandcamp, slug = :slug, id_band = :id_band WHERE id = :id');
+        $this->query = $this->pdo->prepare('UPDATE ' .$this->getTable(). ' SET image = :image, title = :title, 
+        dateSortie = :dateSortie, type = :type, price = :price, dispo = :dispo, description = :description, iframeBandcamp = :iframeBandcamp, slug = :slug, id_band = :id_band WHERE id = :id');
 
         $this->query->bindValue(':id',$entity->getId(), PDO::PARAM_INT);
         $this->query->bindValue(':image',$entity->getImage(), PDO::PARAM_STR);
+        $this->query->bindValue(':title',$entity->getTitle(), PDO::PARAM_STR);
+        $this->query->bindValue(':dateSortie',$entity->getDate(), PDO::PARAM_STR);
+        $this->query->bindValue(':type',$entity->getType(), PDO::PARAM_STR);
+        $this->query->bindValue(':price',$entity->getPrice(), PDO::PARAM_STR);
+        $this->query->bindValue(':dispo',$entity->getDispo(), PDO::PARAM_STR);
+        $this->query->bindValue(':description',$entity->getDescription(), PDO::PARAM_STR);
+        $this->query->bindValue(':iframeBandcamp',$entity->getIframeBandcamp(), PDO::PARAM_STR);
+        $this->query->bindValue(':slug',$entity->getSlug(), PDO::PARAM_STR);
+        $this->query->bindValue(':id_band',$entity->getIdBand(), PDO::PARAM_INT);
+
+        $this->query->execute();
+      
+    }
+    public function updateImageAlt(Product &$entity)
+    {
+        $this->query = $this->pdo->prepare('UPDATE ' .$this->getTable(). ' SET imageAlt = :imageAlt, title = :title, 
+        dateSortie = :dateSortie, type = :type, price = :price, dispo = :dispo, description = :description, iframeBandcamp = :iframeBandcamp, slug = :slug, id_band = :id_band WHERE id = :id');
+
+        $this->query->bindValue(':id',$entity->getId(), PDO::PARAM_INT);
         $this->query->bindValue(':imageAlt',$entity->getImageAlt(), PDO::PARAM_STR);
         $this->query->bindValue(':title',$entity->getTitle(), PDO::PARAM_STR);
         $this->query->bindValue(':dateSortie',$entity->getDate(), PDO::PARAM_STR);
@@ -125,7 +144,27 @@ class ProductManager
         $this->query->bindValue(':price',$entity->getPrice(), PDO::PARAM_STR);
         $this->query->bindValue(':dispo',$entity->getDispo(), PDO::PARAM_STR);
         $this->query->bindValue(':description',$entity->getDescription(), PDO::PARAM_STR);
-        $this->query->bindValue(':linkBandcamp',$entity->getLinkProduct(), PDO::PARAM_STR);
+        $this->query->bindValue(':iframeBandcamp',$entity->getIframeBandcamp(), PDO::PARAM_STR);
+        $this->query->bindValue(':slug',$entity->getSlug(), PDO::PARAM_STR);
+        $this->query->bindValue(':id_band',$entity->getIdBand(), PDO::PARAM_INT);
+
+        $this->query->execute();
+      
+    }
+
+    public function updateNoPhoto(Product &$entity)
+    {
+        $this->query = $this->pdo->prepare('UPDATE ' .$this->getTable(). ' SET title = :title, 
+        dateSortie = :dateSortie, type = :type, price = :price, dispo = :dispo, description = :description, iframeBandcamp = :iframeBandcamp, slug = :slug, id_band = :id_band WHERE id = :id');
+
+        $this->query->bindValue(':id',$entity->getId(), PDO::PARAM_INT);
+        $this->query->bindValue(':title',$entity->getTitle(), PDO::PARAM_STR);
+        $this->query->bindValue(':dateSortie',$entity->getDate(), PDO::PARAM_STR);
+        $this->query->bindValue(':type',$entity->getType(), PDO::PARAM_STR);
+        $this->query->bindValue(':price',$entity->getPrice(), PDO::PARAM_STR);
+        $this->query->bindValue(':dispo',$entity->getDispo(), PDO::PARAM_STR);
+        $this->query->bindValue(':description',$entity->getDescription(), PDO::PARAM_STR);
+        $this->query->bindValue(':iframeBandcamp',$entity->getIframeBandcamp(), PDO::PARAM_STR);
         $this->query->bindValue(':slug',$entity->getSlug(), PDO::PARAM_STR);
         $this->query->bindValue(':id_band',$entity->getIdBand(), PDO::PARAM_INT);
 

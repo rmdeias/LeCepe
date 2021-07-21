@@ -1,19 +1,19 @@
 <?php
 
-function uploadPhoto($path)// Vérifie si le fichier a été uploadé sans erreur.
+function uploadPhoto($path, $postImage)// Vérifie si le fichier a été uploadé sans erreur.
 {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
        
-        if (isset($_FILES["imageBand"]) && $_FILES["imageBand"]["error"] == 0) {
+        if (isset($_FILES[$postImage]) && $_FILES[$postImage]["error"] == 0) {
             $allowed = array(
                 "jpg" => "image/jpg",
                 "jpeg" => "image/jpeg",
                 "gif" => "image/gif",
                 "png" => "image/png",
             ); //tableau extension valide
-            $filename ="le-cepe-records-". $_FILES["imageBand"]["name"];
-            $filetype = $_FILES["imageBand"]["type"];
-            $filesize = $_FILES["imageBand"]["size"];
+            $filename ="le-cepe-records-". $_FILES[$postImage]["name"];
+            $filetype = $_FILES[$postImage]["type"];
+            $filesize = $_FILES[$postImage]["size"];
             $ext = pathinfo($filename, PATHINFO_EXTENSION); //extension du fichier
             $maxsize = 5 * 1024 * 1024; // taille max a ne pas dépasser
 
@@ -33,20 +33,14 @@ function uploadPhoto($path)// Vérifie si le fichier a été uploadé sans erreu
                 if (file_exists($path.$filename)) {
                     die($filename." existe déjà.");
                 } else {
-                    if (!is_dir(
-                        $path
-                    ))// Si le dossier n'existe pas
+                    if (!is_dir($path))// Si le dossier n'existe pas
                     {
-                        mkdir(
-                            $path,
-                            0777,
-                            true
-                        ); // création dossier
+                        mkdir($path,0777,true); // création dossier
                     }
-
+                   
                     // ajout de la photo de couverture dans le dossier
                     move_uploaded_file(
-                        $_FILES["imageBand"]["tmp_name"],
+                        $_FILES[$postImage]["tmp_name"],
                         $path.$filename 
                     ); 
                 
@@ -56,7 +50,7 @@ function uploadPhoto($path)// Vérifie si le fichier a été uploadé sans erreu
                 die("Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer.");
             }
         } else {
-            die ("Error: ".$_FILES["imageBand"]["error"]);
+            die ("Error: ".$_FILES[$postImage]["error"]);
         }
 
     }

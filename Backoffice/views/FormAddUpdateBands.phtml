@@ -22,7 +22,7 @@
             <input class="form-control" type="text" id="linkYoutube" name="linkYoutube" <?php if(isset($info)): ?> value="<?= $info["linkYoutube"] ?>" <?php endif; ?>>
         
             <label>Description: </label>
-            <input class="form-control " type="text" id="description" name="description" <?php if(isset($info)): ?> value="<?= $info["description"] ?>" <?php endif; ?>>
+            <textarea class="form-control " type="text" id="description" name="description"><?php if(isset($info)): ?> <?= $info["description"] ?> <?php endif; ?> </textarea>
             
             <label>Iframe Bandcamp: </label>
             <input class="form-control " type="text" id="iframeBandcamp" name="iframeBandcamp" <?php if(isset($info)): ?> value="<?= $info["iframeBandcamp"] ?>" <?php endif; ?>>

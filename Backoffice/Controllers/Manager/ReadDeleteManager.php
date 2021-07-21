@@ -112,6 +112,46 @@ class ReadDeleteManager
         return  $this->query->fetch(PDO::FETCH_ASSOC);
     }
 
+
+    public function readInnerJoin($column)
+    {
+        $column = $this->setColumn($column);
+        $this->query=  $this->pdo->prepare('SELECT ' . $this->getColumn() . ' from ' . $this->getTable(). ' INNER JOIN bands WHERE products.id_band = bands.id');
+        
+        $this->query->execute();
+       
+      
+        return  $this->query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function readInnerJoinId($column, $id)
+    {
+        $column = $this->setColumn($column);
+        $this->query=  $this->pdo->prepare('SELECT ' . $this->getColumn() . ' from ' . $this->getTable(). ' INNER JOIN bands WHERE products.id_band = :id');
+        
+        $this->query->bindValue(':id',$id, PDO::PARAM_INT);
+
+        $this->query->execute();
+       
+      
+        return  $this->query->fetch(PDO::FETCH_ASSOC);
+    }
+
+
+    public function readInnerJoinWhereId($column, $idBand, $id)
+    {
+        $column = $this->setColumn($column);
+        $this->query=  $this->pdo->prepare('SELECT ' . $this->getColumn() . ' from ' . $this->getTable(). ' INNER JOIN bands WHERE products.id_band = :idBand AND products.id = :id');
+        
+        $this->query->bindValue(':idBand',$idBand, PDO::PARAM_INT);
+        $this->query->bindValue(':id',$id, PDO::PARAM_INT);
+
+        $this->query->execute();
+       
+      
+        return  $this->query->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function deleteById()
     {
         $this->query=  $this->pdo->prepare('DELETE from ' .$this->getTable() . ' WHERE id = :id');

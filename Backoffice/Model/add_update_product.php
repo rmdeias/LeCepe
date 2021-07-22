@@ -37,24 +37,34 @@ if (strpos(htmlspecialchars($_POST["title"]),"/") == false){
     
     // Modification 
     if(isset($_POST["id"])) {
-         // Récupére les datas du produit
+         //Récupére les datas du produit 
         $checkForUpdate = new ReadDeleteManager('products');
-        $check = $checkForUpdate->readInnerJoinWhereId("products.*,bands.bandSlug",$entity->getIdBand(),$_POST["id"]);
+        $check = $checkForUpdate->readInnerJoinWhereProductId("products.*,bands.bandSlug,bands.id",$_POST["id"]);
+        $oldCheck = $check; 
+
+        //Récupere les data de bands
+        $checkBand = new ReadDeleteManager('bands');
+        $checkband = $checkBand->readById("id,bandSlug",$_POST["bands"]);
+
 
         $updateInfo = new ProductManager('products');
         $entity->setId($_POST["id"]);
+        
+        if($checkband["id"] !== $check["id_band"] ){
+            $check["bandSlug"] = $checkband["bandSlug"];
+        }
 
         $path= "../../assets/images/bands/".$check["bandSlug"]."/". $entity->getSlug()."/";
         
-        if($check["title"] != $_POST["title"]){
+        if($check["title"] != $_POST["title"] || $check["bandSlug"] == $checkband["bandSlug"]){
             //copie dossier
             copyDirectory(
-                "../../assets/images/bands/".$check["bandSlug"]."/".$check["slug"],
+                "../../assets/images/bands/".$oldCheck["bandSlug"]."/".$check["slug"],
                 "../../assets/images/bands/".$check["bandSlug"]."/". $entity->getSlug()
             ); 
         
             //suprimme l'ancien dossier
-            deleteDirectory("../../assets/images/bands/".$check["bandSlug"]."/".$check["slug"]);
+            deleteDirectory("../../assets/images/bands/".$oldCheck["bandSlug"]."/".$check["slug"]);
         }
 
         if( $_FILES["image"]["name"] !== ""){ 
@@ -62,7 +72,7 @@ if (strpos(htmlspecialchars($_POST["title"]),"/") == false){
             //suprimme l'ancienne image dans le nouveau dossier
             if( $check["image"] !== ""){ 
             
-               deleteDirectory("../../assets/images/bands/".$check["bandSlug"]."/".$entity->getSlug()."/".$check["image"]);
+               deleteDirectory("../../assets/images/bands/".$oldCheck["bandSlug"]."/".$entity->getSlug()."/".$check["image"]);
             }
             
             uploadPhoto($path,"image");
@@ -74,9 +84,10 @@ if (strpos(htmlspecialchars($_POST["title"]),"/") == false){
             //suprimme l'ancienne imageAlt dans le nouveau dossier
             if( $check["imageAlt"] !== ""){ 
             
-                deleteDirectory("../../assets/images/bands/".$check["bandSlug"]."/".$entity->getSlug()."/".$check["imageAlt"]);
+                deleteDirectory("../../assets/images/bands/".$oldCheck["bandSlug"]."/".$entity->getSlug()."/".$check["imageAlt"]);
             }
             uploadPhoto($path,"imageAlt");
+            var_dump("ALT ".$path);
             $updateInfo->updateImageAlt($entity);
         }
         
@@ -85,7 +96,6 @@ if (strpos(htmlspecialchars($_POST["title"]),"/") == false){
       
             $updateInfo->updateNoPhoto($entity);
         }
-   
    
     } 
     // Creation d'une nouvelle ligne 

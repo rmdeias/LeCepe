@@ -37,13 +37,15 @@
            <hr>
            
            <section >
-            <h2>More Products from <?= $info["name"] ?></h2>
+            <h2>Products from <?= $info["name"] ?></h2>
          
             <div class ="allProducts">
-            <?php if(isset($products)): ?>
+          
             <?php foreach ($products as $product): ?>
+
+                
                 <article class = "productCard">
-                    <a href="" ><img class="imgProduct" src="./assets/images/<?= $product["bandSlug"]."/".$product["slug"]."/".$product["image"] ?>"></a>
+                    <a href="" ><img class="imgProduct" src="./assets/images/bands/<?= $product["bandSlug"]."/".$product["slug"]."/".$product["image"] ?>"></a>
                     <div class="description">
                         <h1><a href="" class="band"><?= $product["name"] ?></a></h1>
                         <h2><a href="" class="title"><?= $product["title"] ?></a></h2>
@@ -54,7 +56,7 @@
                     </div>
                 </article>
             <?php endforeach; ?>
-            <?php endif; ?>
+         
             </div>
             
             

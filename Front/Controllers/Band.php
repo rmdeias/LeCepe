@@ -7,20 +7,19 @@ require_once 'Backoffice/Controllers/Manager/ReadDeleteManager.php';
         
         $id = explode("-",$_GET["name"]);
      
+      
         $readInfoBand = new ReadDeleteManager('bands');
-        $info = $readInfoBand->readById('*',$id[1]);
+        $info = $readInfoBand->readById('*',$id[0]);
+         
         
-
         $moreProducts = new ReadDeleteManager('products');
-        $products = $moreProducts->readInnerJoinId('products.*,bands.name,bands.bandSlug',$id[1]);
-        var_dump($products);
-    
+        $products = $moreProducts->readInnerJoinWhereBandId('products.*,name,bandSlug',$id[0]);
+        
+       
       
         $title = $info["name"];
         require "./Front/Views/Band.phtml";
         require "./Front/Views/Layout.phtml";
     }
-    else{
-        
-    }
-
+    
+   

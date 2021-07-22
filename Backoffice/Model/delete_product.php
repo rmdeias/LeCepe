@@ -10,12 +10,12 @@ $idBand = $readInfoForIdBand->readById('id_band',$_GET["id"]);
 
 // Récupére les datas du produit
 $checkForDelete = new ReadDeleteManager('products');
-$check = $checkForDelete->readInnerJoinWhereId("slug,bands.bandSlug",$idBand["id_band"],$_GET["id"]);
+$check = $checkForDelete->readInnerJoinWhereProductId("slug,bands.bandSlug",$_GET["id"]);
 deleteDirectory("../../assets/images/bands/".$check["bandSlug"]."/".$check["slug"]);
 
 //Delete en database
 $deleteData = new ReadDeleteManager('products');
-$info = $deleteData->deleteById();
+$info = $deleteData->deleteById($_GET["id"]);
 
 header('Location: ../Controllers/ProductGestion.php');
 exit();

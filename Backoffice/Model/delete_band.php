@@ -5,15 +5,24 @@ require "./upload_functions.php";
 use Controllers\Manager\ReadDeleteManager;
 
 
-//Delete en dossier  
+//Delete le dossier du groupe 
 $checkForDelete = new ReadDeleteManager('bands');
 $check = $checkForDelete->readById("bandSlug",$_GET["id"]);
 deleteDirectory("../../assets/images/bands/".$check["bandSlug"]);
 
+// Récupére les ids  des produit
+$checkForDeleteProducts = new ReadDeleteManager('products');
+$checkIds = $checkForDeleteProducts->readInnerJoinWhereBandId("products.id",$_GET["id"]);
 
-//Delete en database
+
+$deleteData = new ReadDeleteManager('products');
+foreach($checkIds as $check ){
+    $deleteData->deleteById($check["id"]);
+}
+
+//Delete en le groupe database
 $deleteData = new ReadDeleteManager('bands');
-$info = $deleteData->deleteById();
+$deleteData->deleteById($_GET["id"]);
 
 header('Location: ../Controllers/BandGestion.php');
 exit();

@@ -116,7 +116,7 @@ class ReadDeleteManager
     public function readInnerJoin($column)
     {
         $column = $this->setColumn($column);
-        $this->query=  $this->pdo->prepare('SELECT ' . $this->getColumn() . ' from ' . $this->getTable(). ' INNER JOIN bands WHERE products.id_band = bands.id');
+        $this->query=  $this->pdo->prepare('SELECT ' . $this->getColumn() . ' from ' . $this->getTable(). ' INNER JOIN bands ON products.id_band = bands.id');
         
         $this->query->execute();
        
@@ -133,17 +133,30 @@ class ReadDeleteManager
 
         $this->query->execute();
        
-      
+      //SELECT *, bands.name FROM `products`INNER JOIN bands ON products.id_band = bands.id WHERE id_band = 19 
         return  $this->query->fetch(PDO::FETCH_ASSOC);
     }
 
-
-    public function readInnerJoinWhereId($column, $idBand, $id)
+    public function readInnerJoinWhereBandId($column, $idBand)
     {
         $column = $this->setColumn($column);
-        $this->query=  $this->pdo->prepare('SELECT ' . $this->getColumn() . ' from ' . $this->getTable(). ' INNER JOIN bands WHERE products.id_band = :idBand AND products.id = :id');
+        $this->query=  $this->pdo->prepare('SELECT ' . $this->getColumn() . ' from ' . $this->getTable(). ' INNER JOIN bands ON products.id_band = bands.id WHERE id_band = :idBand');
         
         $this->query->bindValue(':idBand',$idBand, PDO::PARAM_INT);
+
+        $this->query->execute();
+       
+      //SELECT *, bands.name FROM `products`INNER JOIN bands ON products.id_band = bands.id WHERE id_band = 19 
+        return  $this->query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    public function readInnerJoinWhereProductId($column, $id)
+    {
+        $column = $this->setColumn($column);
+        $this->query=  $this->pdo->prepare('SELECT ' . $this->getColumn() . ' from ' . $this->getTable(). ' INNER JOIN bands ON products.id_band = bands.id WHERE products.id = :id');
+        
+        
         $this->query->bindValue(':id',$id, PDO::PARAM_INT);
 
         $this->query->execute();
@@ -152,11 +165,11 @@ class ReadDeleteManager
         return  $this->query->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function deleteById()
+    public function deleteById($id)
     {
         $this->query=  $this->pdo->prepare('DELETE from ' .$this->getTable() . ' WHERE id = :id');
        
-        $this->query->bindValue(':id',$_GET["id"], PDO::PARAM_INT);
+        $this->query->bindValue(':id',$id, PDO::PARAM_INT);
         
         $this->query->execute();
     }

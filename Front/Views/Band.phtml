@@ -45,10 +45,13 @@
 
                 
                 <article class = "productCard">
-                    <a href="" ><img class="imgProduct" src="./assets/images/bands/<?= $product["bandSlug"]."/".$product["slug"]."/".$product["image"] ?>"></a>
+                    <a href="Product&name=<?= $id[0]."-".$product["id"]."-".$product["bandSlug"]."-".$product["slug"] ?>">
+                        <img class=" img imgProduct" src="./assets/images/bands/<?= $product["bandSlug"]."/".$product["slug"]."/".$product["image"] ?>">
+                        <img class="cache imgAlt imgProduct" src="./assets/images/bands/<?= $product["bandSlug"]."/".$product["slug"]."/".$product["imageAlt"] ?>">
+                    </a>
                     <div class="description">
-                        <h1><a href="" class="band"><?= $product["name"] ?></a></h1>
-                        <h2><a href="" class="title"><?= $product["title"] ?></a></h2>
+                        <h1><a href="#"  class="band"><?= $product["name"] ?></a></h1>
+                        <h2><a href="Product&name=<?= $id[0]."-".$product["id"]."-".$product["bandSlug"]."-".$product["slug"] ?>" class="title"><?= $product["title"] ?></a></h2>
                         <p>Release Date: <?= $product["dateSortie"] ?></p>
                         <p>type: <?= $product["type"] ?></p>
                         <p>Price: <?= $product["price"] ?></p>

@@ -14,8 +14,9 @@ require_once 'Backoffice/Controllers/Manager/ReadDeleteManager.php';
         
         $moreProducts = new ReadDeleteManager('products');
         $products = $moreProducts->readInnerJoinWhereBandId('products.*,name,bandSlug',$id[0]);
+
         
-       
+      
       
         $title = $info["name"];
         require "./Front/Views/Band.phtml";

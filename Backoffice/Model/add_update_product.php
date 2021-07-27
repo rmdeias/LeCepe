@@ -22,7 +22,8 @@ if (strpos(htmlspecialchars($_POST["title"]),"/") == false){
     $entity->setDispo($_POST["dispo"]);
     $entity->setDescription($_POST["description"]);
     $entity->setIframeBandcamp($_POST["iframeBandcamp"]);
-    //$entity->setIdBand($_POST["id_band"]);
+    $entity->setLinkBandcamp($_POST["linkBandcamp"]);
+    
 
     if(strpos($_POST["title"] , "&" )){
 

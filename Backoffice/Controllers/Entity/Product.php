@@ -42,6 +42,11 @@ class Product
     /**
      type="string", length=255
      */
+    private $linkBandcamp;
+
+    /**
+     type="string", length=255
+     */
     private $slug;
 
     /**
@@ -131,6 +136,18 @@ class Product
     public function setPrice(string $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getLinkBandcamp(): ?string
+    {
+        return $this->linkBandcamp;
+    }
+
+    public function setLinkBandcamp(string $linkBandcamp): self
+    {
+        $this->linkBandcamp = $linkBandcamp;
 
         return $this;
     }

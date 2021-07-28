@@ -4,94 +4,22 @@
 
             <section class ="allProducts">
             
-
+            <?php foreach ($products as $product): ?>
                 <article class = "productCard">
-                    <a href="../Controllers/Product.php" ><img class="imgProduct" src="././assets/images/a0858355988_16.jpg"></a>
+                    <a href="Product&name=<?= $product["id_band"]."-".$product["id"]."-".$product["bandSlug"]."-".$product["slug"] ?>" >
+                        <img class="img imgProduct" src="./assets/images/bands/<?= $product["bandSlug"]."/".$product["slug"]."/".$product["image"] ?>">
+                        <img class="imgAlt imgProduct cache" src="./assets/images/bands/<?= $product["bandSlug"]."/".$product["slug"]."/".$product["imageAlt"] ?>">
+                    </a>
                     <div class="description">
-                        <h1><a href="Band" class="band">Deedee & The Abracadabras</a></h1>
-                        <h2><a href="Product" class="title">Deedee & The Abracadabras</a></h2>
-                        <p>Release Date: 14/5/2021</p>
-                        <p>type: Vinyl</p>
-                        <p>Avail: In stock</p>
-                        <p>Price: $40.00</p>
+                        <h1><a href="Band&name=<?= $product["id_band"]."-".$product["bandSlug"] ?>" class="band"><?= $product["name"] ?></a></h1>
+                        <h2><a href="Product&name=<?= $product["id_band"]."-".$product["id"]."-".$product["bandSlug"]."-".$product["slug"] ?>" ><?= $product["title"] ?></a></h2>
+                        <p>Release Date: <?= $product["dateSortie"] ?></p>
+                        <p>type: <?= $product["type"] ?></p>
+                        <p>Avail: <?= $product["dispo"] ?></p>
+                        <p>Price: $<?= $product["price"] ?></p>
                     </div>
                 </article>
-                <article class = "productCard">
-                    <a href="" ><img class="imgProduct" src="./assets/images/a0858355988_16.jpg"></a>
-                    <div class="description">
-                        <h1><a href="" class="band">Deedee & The Abracadabras</a></h1>
-                        <h2><a href="" class="title">Deedee & The Abracadabras</a></h2>
-                        <p>Release Date: 14/5/2021</p>
-                        <p>type: Vinyl</p>
-                        <p>Avail: In stock</p>
-                        <p>Price: $40.00</p>
-                    </div>
-                </article>
-                <article class = "productCard">
-                    <a href="" ><img class="imgProduct" src="./assets/images/a0858355988_16.jpg"></a>
-                    <div class="description">
-                        <h1><a href="" class="band">Deedee & The Abracadabras</a></h1>
-                        <h2><a href="" class="title">Deedee & The Abracadabras</a></h2>
-                        <p>Release Date: 14/5/2021</p>
-                        <p>type: Vinyl</p>
-                        <p>Avail: In stock</p>
-                        <p>Price: $40.00</p>
-                    </div>
-                </article>
-                <article class = "productCard">
-                    <a href="" ><img class="imgProduct" src="./assets/images/a0858355988_16.jpg"></a>
-                    <div class="description">
-                        <h1><a href="" class="band">Deedee & The Abracadabras</a></h1>
-                        <h2><a href="" class="title">Deedee & The Abracadabras</a></h2>
-                        <p>Release Date: 14/5/2021</p>
-                        <p>type: Vinyl</p>
-                        <p>Avail: In stock</p>
-                        <p>Price: $40.00</p>
-                    </div>
-                </article>
-
-                <article class = "productCard">
-                    <a href="" ><img class="imgProduct" src="./assets/images/a3872158123_16.jpg"></a>
-                    <div class="description">
-                        <h1><a href="" class="band">Deedee & The Abracadabras</a></h1>
-                        <h2><a href="" class="title">Deedee & The Abracadabras</a></h2>
-                        <p>Release Date: 14/5/2021</p>
-                        <p>type: Vinyl</p>
-                        <p>Price: $40.00</p>
-                    </div>
-                </article>
-
-                <article class = "productCard">
-                    <a href="" ><img class="imgProduct" src="./assets/images/a0858355988_16.jpg"></a>
-                    <div class="description">
-                        <h1><a href="" class="band">Deedee & The Abracadabras</a></h1>
-                        <h2><a href="" class="title">Deedee & The Abracadabras</a></h2>
-                        <p>Release Date: 14/5/2021</p>
-                        <p>type: Vinyl</p>
-                        <p>Price: $40.00</p>
-                    </div>
-                </article>
-
-                <article class = "productCard">
-                    <a href="" ><img class="imgProduct" src="./assets/images/a3872158123_16.jpg"></a>
-                    <div class="description">
-                        <h1><a href="" class="band">Deedee & The Abracadabras</a></h1>
-                        <h2><a href="" class="title">Deedee & The Abracadabras</a></h2>
-                        <p>Release Date: 14/5/2021</p>
-                        <p>type: Vinyl</p>
-                        <p>Price: $40.00</p>
-                    </div>
-                </article>
-                <article class = "productCard">
-                    <a href="" ><img class="imgProduct" src="./assets/images/a3872158123_16.jpg"></a>
-                    <div class="description">
-                        <h1><a href="./Deedee&TheAbracadabras.html" class="band">Deedee & The Abracadabras</a></h1>
-                        <h2><a href="" class="title">Deedee & The Abracadabras</a></h2>
-                        <p>Release Date: 14/5/2021</p>
-                        <p>type: Vinyl</p>
-                        <p>Price: $40.00</p>
-                    </div>
-                </article>
+                <?php endforeach; ?> 
             </section>
           
         </div>

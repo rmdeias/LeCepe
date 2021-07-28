@@ -8,8 +8,7 @@ use Controllers\Manager\ProductManager;
 use Controllers\Manager\ReadDeleteManager;
 use Controllers\Entity\Product;
 
-// recherche "/" dans le nom pour éviter la création d'un sous dossier ou d'une balise fermante html
-if (strpos(htmlspecialchars($_POST["title"]),"/") == false){
+
     $_POST["iframeBandcamp"] = htmlspecialchars($_POST["iframeBandcamp"]);
     $entity = new Product();
 
@@ -25,13 +24,13 @@ if (strpos(htmlspecialchars($_POST["title"]),"/") == false){
     $entity->setLinkBandcamp($_POST["linkBandcamp"]);
     
 
-    if(strpos($_POST["title"] , "&" )){
+    if(strpos($_POST["title"] , "&" )|| strpos($_POST["title"] , "/" )){
 
-        $entity->setSlug(str_replace("&", "and", $_POST["title"]));
+        $entity->setSlug(strtolower(str_replace(["&","/"], "and", $_POST["title"])));
         $entity->setSlug(str_replace(" ", "-", $entity->getSlug()));
     }
     else{
-        $entity->setSlug(str_replace(" ", "-", $_POST["title"]));
+        $entity->setSlug(strtolower(str_replace(" ", "-", $_POST["title"])));
     }
         
     $entity->setIdBand($_POST["bands"]);
@@ -114,10 +113,6 @@ if (strpos(htmlspecialchars($_POST["title"]),"/") == false){
         uploadPhoto($path,"image");
         uploadPhoto($path,"imageAlt"); 
     }
-}
-else{
-    die("Le titre de doit pas contenir /");
-}
 
 header('Location: ../Controllers/ProductGestion.php');
 exit;

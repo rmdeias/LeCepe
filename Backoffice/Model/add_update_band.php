@@ -8,9 +8,6 @@ use Controllers\Manager\BandManager;
 use Controllers\Manager\ReadDeleteManager;
 use Controllers\Entity\Band;
 
-
-// recherche "/" dans le nom pour éviter la création d'un sous dossier ou d'une balise fermante html
-if (strpos(htmlspecialchars($_POST["name"]),"/") == false){
     $_POST["iframeYoutube"] = htmlspecialchars($_POST["iframeYoutube"]);
     $_POST["iframeBandcamp"] = htmlspecialchars($_POST["iframeBandcamp"]);
     $entity = new Band();
@@ -24,13 +21,13 @@ if (strpos(htmlspecialchars($_POST["name"]),"/") == false){
     $entity->setIframeBandcamp($_POST["iframeBandcamp"]);
     $entity->setIframeYoutube($_POST["iframeYoutube"]);
 
-    if(strpos($_POST["name"] , "&" )){
+    if(strpos($_POST["name"] , "&" ) || strpos($_POST["name"] , "/" ) ){
 
-        $entity->setSlug(str_replace("&", "and", $_POST["name"]));
+        $entity->setSlug(strtolower(str_replace(["&","/"], "and", $_POST["name"])));
         $entity->setSlug(str_replace(" ", "-", $entity->getSlug()));
     }
     else{
-        $entity->setSlug(str_replace(" ", "-", $_POST["name"]));
+        $entity->setSlug(strtolower(str_replace(" ", "-", $_POST["name"])));
     }
     
     $path = "../../assets/images/bands/". $entity->getSlug()."/";
@@ -81,10 +78,7 @@ if (strpos(htmlspecialchars($_POST["name"]),"/") == false){
         $insertInfo = new BandManager('bands');
         $insertInfo->create($entity);
     }
-}
-else{
-    die("Le nom de doit pas contenir /");
-}
+
 header('Location: ../Controllers/BandGestion.php');
 exit;
 

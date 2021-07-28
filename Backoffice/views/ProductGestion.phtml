@@ -31,7 +31,7 @@
                 <td><?= $info["dateSortie"] ?></td>
                 <td><?= $info["type"] ?></td>
                 <td><?= $info["price"] ?></td>
-                <td><?= $info["description"] ?></td>
+                <td><?= substr($info["description"] , 0, 45)?>...</td>
                 <td><?= $info["linkBandcamp"] ?></td>
                 <td><?= substr($info["iframeBandcamp"] , 0, 45)?>...</td>
                 <td><?= $info["dispo"] ?></td>

@@ -1,13 +1,16 @@
 <?php
 session_start();
+use Controllers\Manager\ConnectDb;
+use PDO;
+require_once 'Manager/ConnectDb.php';
 
-require "../dbConnect/dataBase.php";
+ $dbh = new ConnectDb();
 
 $_POST["Email"] = htmlspecialchars($_POST["Email"]);
 $_POST["Password"] = htmlspecialchars($_POST["Password"]);
 $passRegex = '/^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,20}$/';
 
-$query = $dbh->prepare("SELECT id, Email, adminPassword FROM connectadmin WHERE id = id");
+$query = $dbh->prep("SELECT id, Email, adminPassword FROM connectadmin WHERE id = id");
 $query->execute();
 $admin = $query->fetch(PDO::FETCH_ASSOC);
 
@@ -26,7 +29,7 @@ if (isset($admin["Email"]) && isset($admin["adminPassword"])) {
     }
 } else {
     if (preg_match($passRegex, $_POST["Password"]) && filter_var($_POST["Email"], FILTER_VALIDATE_EMAIL)) {
-        $query = $dbh->prepare("INSERT INTO connectadmin (Email, adminPassword) Values (:Email, :Password)");
+        $query = $dbh->prep("INSERT INTO connectadmin (Email, adminPassword) Values (:Email, :Password)");
         $query->execute(
             [
                 "Email" => $_POST["Email"],

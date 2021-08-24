@@ -1,6 +1,7 @@
 <?php
 namespace Controllers\Manager;
 use PDO;
+require_once "ConnectDb.php";
 
 class ReadDeleteManager
 {
@@ -34,16 +35,7 @@ class ReadDeleteManager
       
     public function __construct($table)
     {
-        try{
-            $this->pdo = new PDO('mysql:host=localhost;dbname=leceperecords', "root", "");
-            $this->pdo->exec('SET NAMES UTF8');
-            $this->pdo->exec("SET lc_time_names = 'fr_FR'");
-            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        }
-        catch (Exception $e) {
-            die("Impossible de se connecter : " . $e->getMessage());
-        }
-
+        $this->pdo = new ConnectDb ();
         $this->setTable($table);
     }
 
@@ -89,13 +81,16 @@ class ReadDeleteManager
         return $this->column;
     }
 
+
     public function read($column)
     {
+        
         $column = $this->setColumn($column);
-        $this->query=  $this->pdo->prepare('SELECT ' . $this->getColumn() . ' from ' . $this->getTable());
+
+        $this->query=  $this->pdo->prep('SELECT ' . $this->getColumn() . ' from ' . $this->getTable());
+
         $this->query->execute();
-       
-      
+
         return  $this->query->fetchAll(PDO::FETCH_ASSOC);
     }
     
@@ -103,7 +98,7 @@ class ReadDeleteManager
     {
         $column = $this->setColumn($column);
         
-        $this->query=  $this->pdo->prepare('SELECT '. $this->getColumn() . ' from ' .$this->getTable() . ' WHERE id = :id');
+        $this->query=  $this->pdo->prep('SELECT '. $this->getColumn() . ' from ' .$this->getTable() . ' WHERE id = :id');
         
         $this->query->bindValue(':id',$id, PDO::PARAM_INT);
         
@@ -112,11 +107,11 @@ class ReadDeleteManager
         return  $this->query->fetch(PDO::FETCH_ASSOC);
     }
 
-
     public function readInnerJoin($column)
     {
         $column = $this->setColumn($column);
-        $this->query=  $this->pdo->prepare('SELECT ' . $this->getColumn() . ' from ' . $this->getTable(). ' INNER JOIN bands ON products.id_band = bands.id');
+       
+        $this->query=  $this->pdo->prep('SELECT ' . $this->getColumn() . ' from ' . $this->getTable(). ' INNER JOIN bands ON products.id_band = bands.id');
         
         $this->query->execute();
        
@@ -127,7 +122,7 @@ class ReadDeleteManager
     public function readInnerJoinId($column, $id)
     {
         $column = $this->setColumn($column);
-        $this->query=  $this->pdo->prepare('SELECT ' . $this->getColumn() . ' from ' . $this->getTable(). ' INNER JOIN bands WHERE products.id_band = :id');
+        $this->query=  $this->pdo->prep('SELECT ' . $this->getColumn() . ' from ' . $this->getTable(). ' INNER JOIN bands WHERE products.id_band = :id');
         
         $this->query->bindValue(':id',$id, PDO::PARAM_INT);
 
@@ -140,7 +135,7 @@ class ReadDeleteManager
     public function readInnerJoinWhereBandId($column, $idBand)
     {
         $column = $this->setColumn($column);
-        $this->query=  $this->pdo->prepare('SELECT ' . $this->getColumn() . ' from ' . $this->getTable(). ' INNER JOIN bands ON products.id_band = bands.id WHERE id_band = :idBand');
+        $this->query=  $this->pdo->prep('SELECT ' . $this->getColumn() . ' from ' . $this->getTable(). ' INNER JOIN bands ON products.id_band = bands.id WHERE id_band = :idBand');
         
         $this->query->bindValue(':idBand',$idBand, PDO::PARAM_INT);
 
@@ -154,7 +149,7 @@ class ReadDeleteManager
     public function readInnerJoinWhereProductId($column, $id)
     {
         $column = $this->setColumn($column);
-        $this->query=  $this->pdo->prepare('SELECT ' . $this->getColumn() . ' from ' . $this->getTable(). ' INNER JOIN bands ON products.id_band = bands.id WHERE products.id = :id');
+        $this->query=  $this->pdo->prep('SELECT ' . $this->getColumn() . ' from ' . $this->getTable(). ' INNER JOIN bands ON products.id_band = bands.id WHERE products.id = :id');
         
         
         $this->query->bindValue(':id',$id, PDO::PARAM_INT);
@@ -167,7 +162,7 @@ class ReadDeleteManager
 
     public function deleteById($id)
     {
-        $this->query=  $this->pdo->prepare('DELETE from ' .$this->getTable() . ' WHERE id = :id');
+        $this->query=  $this->pdo->prep('DELETE from ' .$this->getTable() . ' WHERE id = :id');
        
         $this->query->bindValue(':id',$id, PDO::PARAM_INT);
         

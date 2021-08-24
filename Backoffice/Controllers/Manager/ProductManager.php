@@ -2,6 +2,7 @@
 namespace Controllers\Manager;
 use Controllers\Entity\Product;
 use PDO;
+require_once "ConnectDb.php";
 
 class ProductManager
 {
@@ -35,16 +36,8 @@ class ProductManager
       
     public function __construct($table)
     {
-        try{
-            $this->pdo = new PDO('mysql:host=localhost;dbname=leceperecords', "root", "");
-            $this->pdo->exec('SET NAMES UTF8');
-            $this->pdo->exec("SET lc_time_names = 'fr_FR'");
-            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        }
-        catch (Exception $e) {
-            die("Impossible de se connecter : " . $e->getMessage());
-        }
-
+        
+        $this->pdo = new ConnectDb();
         $this->setTable($table);
     }
 
@@ -93,7 +86,7 @@ class ProductManager
 
     public function create(Product &$entity)
     {
-        $this->query = $this->pdo->prepare('INSERT INTO ' .$this->getTable() . ' (image,imageAlt, title, dateSortie,type, price, dispo, description, iframeBandcamp, linkBandcamp, slug, id_band) 
+        $this->query = $this->pdo->prep('INSERT INTO ' .$this->getTable() . ' (image,imageAlt, title, dateSortie,type, price, dispo, description, iframeBandcamp, linkBandcamp, slug, id_band) 
         Values (:image,:imageAlt, :title, :dateSortie,:type, :price, :dispo, :description, :iframeBandcamp, :linkBandcamp, :slug, :id_band)');
         
         $this->query->bindValue(':image',$entity->getImage(), PDO::PARAM_STR);
@@ -114,7 +107,7 @@ class ProductManager
 
     public function updateImage(Product &$entity)
     {
-        $this->query = $this->pdo->prepare('UPDATE ' .$this->getTable(). ' SET image = :image, title = :title, 
+        $this->query = $this->pdo->prep('UPDATE ' .$this->getTable(). ' SET image = :image, title = :title, 
         dateSortie = :dateSortie, type = :type, price = :price, dispo = :dispo, description = :description, iframeBandcamp = :iframeBandcamp, linkBandcamp = :linkBandcamp, slug = :slug, id_band = :id_band WHERE id = :id');
 
         $this->query->bindValue(':id',$entity->getId(), PDO::PARAM_INT);
@@ -135,7 +128,7 @@ class ProductManager
     }
     public function updateImageAlt(Product &$entity)
     {
-        $this->query = $this->pdo->prepare('UPDATE ' .$this->getTable(). ' SET imageAlt = :imageAlt, title = :title, 
+        $this->query = $this->pdo->prep('UPDATE ' .$this->getTable(). ' SET imageAlt = :imageAlt, title = :title, 
         dateSortie = :dateSortie, type = :type, price = :price, dispo = :dispo, description = :description, iframeBandcamp = :iframeBandcamp,linkBandcamp = :linkBandcamp, slug = :slug, id_band = :id_band WHERE id = :id');
 
         $this->query->bindValue(':id',$entity->getId(), PDO::PARAM_INT);
@@ -157,7 +150,7 @@ class ProductManager
 
     public function updateNoPhoto(Product &$entity)
     {
-        $this->query = $this->pdo->prepare('UPDATE ' .$this->getTable(). ' SET title = :title, 
+        $this->query = $this->pdo->prep('UPDATE ' .$this->getTable(). ' SET title = :title, 
         dateSortie = :dateSortie, type = :type, price = :price, dispo = :dispo, description = :description, iframeBandcamp = :iframeBandcamp, linkBandcamp = :linkBandcamp, slug = :slug, id_band = :id_band WHERE id = :id');
 
         $this->query->bindValue(':id',$entity->getId(), PDO::PARAM_INT);

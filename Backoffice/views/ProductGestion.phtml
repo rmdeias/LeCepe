@@ -3,7 +3,7 @@
 <h1 class="text-center">Gestion des Produits</h1>
 
 <a href="../Controllers/FormAddUpdateProducts.php" class="btn btn-primary mb-3">Ajouter un produit</a>
-<table class="table">
+<table class="table text-center">
     <thead>
         <tr>
             <th>Titre</th>
@@ -31,9 +31,9 @@
                 <td><?= $info["dateSortie"] ?></td>
                 <td><?= $info["type"] ?></td>
                 <td><?= $info["price"] ?></td>
-                <td><?= substr($info["description"] , 0, 45)?>...</td>
-                <td><?= $info["linkBandcamp"] ?></td>
-                <td><?= substr($info["iframeBandcamp"] , 0, 45)?>...</td>
+                <td><?= substr($info["description"] , 0,10)?>...</td>
+                <td>...<?= substr($info["linkBandcamp"] , 35, 30)?>...</td>
+                <td><?= substr($info["iframeBandcamp"] , 0, 10)?>...</td>
                 <td><?= $info["dispo"] ?></td>
                 
                 <td><a class="btn btn-info" href="../Controllers/FormAddUpdateProducts.php?id=<?= $info["id"]  ?>"><i class="fas fa-pen-fancy"></i></a></td>

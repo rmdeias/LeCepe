@@ -23,12 +23,12 @@
             <tr>
                 <td><?= $info["name"] ?></td>
                 <td><img class="img-thumbnail" src=<?= "../../assets/images/bands/".$info["bandSlug"]."/".$info["imageBand"] ?> ></td>
-                <td><?= substr($info["description"] , 0, 45)?></td>
+                <td><?= substr($info["description"] , 0, 20)?></td>
                 <td><?= $info["linkFB"] ?></td>
                 <td><?= $info["linkInsta"] ?></td>
                 <td><?= $info["linkYoutube"] ?></td>
-                <td><?= substr($info["iframeBandcamp"] , 0, 45)?>...</td>
-                <td><?= substr($info["iframeYoutube"] , 0, 45)?>...</td>
+                <td><?= substr($info["iframeBandcamp"] , 0, 10)?>...</td>
+                <td><?= substr($info["iframeYoutube"] , 0, 10)?>...</td>
                 
                 <td><a class="btn btn-info" href="../Controllers/FormAddUpdateBands.php?id=<?= $info["id"]  ?>"><i class="fas fa-pen-fancy"></i></a></td>
                 <td><a class="delete btn btn-danger " id="<?= $info["id"]  ?>" href="../Model/delete_band.php?id=<?= $info["id"]  ?>"><i class="fas fa-trash"></i></a></td>

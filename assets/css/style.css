@@ -2,17 +2,25 @@
     box-sizing: border-box;
     outline: none;
 }
-
+@font-face {
+    font-family: "Gilmer";
+    src: url(./font/Gilmer-Light.otf);
+          
+   }
 body{
     font-family: sans-serif;
     min-width: 280px;
     font-size: 1rem;
+    font-family: "Gilmer", sans-serif;
+
+   
 }
 
 .container{
     padding-left: 5%;
     padding-right: 5%;
     margin-top: 130px;
+    
 }
 
 a{
@@ -20,7 +28,7 @@ a{
     color: black;
 }
 
-nav, .frames, .artistLinks{
+#myBtn, .frames, .artistLinks{
     text-align: center;
 }
 
@@ -30,44 +38,172 @@ ul{
 }
 
 
+/******************************** SIDE MENU *******************************************/
+#sidebar-wrapper {
+    position: fixed;
+    z-index: 2;
+    right: 0;
+    width: 200px;
+    height: 50%;
+    transition: all 0.4s ease 0s;
+    transform: translateX(250px);
+    background: rgba(255, 171, 0, 0.9);
+    border-radius: 10px;
+  }
+  
+  .sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .sidebar-nav li.sidebar-nav-item a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 15px;
+   
+  }
+  
+  .sidebar-nav li a:hover, .sidebar-nav li a:active {
+    text-decoration: none;
+    color: rgb(255, 215, 6);
+    background: rgba(226, 97, 44, 0.7);
+    font-weight: bold;
+  }
+  
+  .sidebar-nav li a:active,
+  .sidebar-nav li a:focus {
+    text-decoration: none;
+  }
+  /*
+  .sidebar-nav > .sidebar-brand {
+    font-size: 1.2rem;
+    background: rgba(43, 139, 235, 0.9);
+    height: 80px;
+    line-height: 50px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+  }
+  
+  .sidebar-nav > .sidebar-brand a {
+    color: pink;
+  }
+  
+  .sidebar-nav > .sidebar-brand a:hover {
+    color: pink;
+    background: none;
+  }
+  */
+  #sidebar-wrapper.active {
+    right: 250px;
+    width: 250px;
+    transition: all 0.4s ease 0s;
+  }
+  /**************************** MENU BURGER ******************************/
+  .menu-toggle {
+    position: fixed;
+    right: 15px;
+    top: 15px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    color: #fff;
+    background: rgba(52, 58, 64, 0.5);
+    line-height: 50px;
+    z-index: 999;
+    border-radius: 10px;
+  }
+  
+  .menu-toggle:focus, .menu-toggle:hover {
+    color: #fff;
+  }
+  
+  .menu-toggle:hover {
+    background: #343a40;
+  }
+  .scroll-to-top {
+      position: fixed;
+      right: 15px;
+      bottom: 15px;
+      display: none;
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      color: white;
+      background: rgba(52, 58, 64, 0.5);
+      line-height: 45px;
+    }
+    
+    .scroll-to-top:focus, .scroll-to-top:hover {
+      color: white;
+    }
+    
+    .scroll-to-top:hover {
+      background: #343a40;
+    }
+    
+    .scroll-to-top i {
+      font-weight: 800;
+    }
 /********************************************** HEADER ***************************/
 header{
     width:100%;
-    text-align: center;
-    position: fixed;
-    top: 0;
+    text-align: center; 
 }
 
 .logo{
-    background-color: black;
+    background-color: white;
 }
 
 .logoimg{ 
-    width: 100%;
+    width: 90%;
 }
 
-nav{
-    display: flex;
+#myBtn{
+
+    display: none;
     justify-content: space-around;
-    background-color: white;
-    padding-top: 15px;
-    padding-bottom: 15px;  
+    background-color:  #ffab00;
+    text-transform: uppercase;  
 }
 
-/********************************************** allProducts SECTION  ***************************/
+#myBtn a{
+    width:100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: white;
+    text-align: center;
+    
+}
+#myBtn a:hover,#myBtn a:active {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-weight: bold;
+    color: rgb(255, 215, 6);
+    background-color: #e2612c;
+    text-align: center;
 
-.allProducts{
+
+}
+/********************************************** allProducts SECTION  ***************************/
+/*
+.allProducts .card  {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+}*/
 
-.allProducts h1,.allProducts h2{
+.allProducts .card h1,.allProducts .card h2{
     font-size:unset;
     margin:0;
 }
 
-.allProducts h2{
+.allProducts .card h2{
     font-weight:unset ;
 }
 
@@ -75,6 +211,8 @@ nav{
     display: flex;
     flex-direction: column;
     margin: 35px;
+    border-radius: 10px;
+    box-shadow: 10px 5px 5px rgba(52, 58, 64, 0.5);
 }
 
 .productCard .imgProduct{
@@ -164,8 +302,7 @@ nav{
 
 .ImgProduct{
     display: block;
-    width: 100%;
-    
+    width: 100%; 
 }
 
 .cache{
@@ -198,10 +335,13 @@ nav{
 .productPage .frames{
   
     margin-top: 30px;
-    
 }
 
+/********************************************* FOOTER ****************************************/
 
+.LeCepegif{
+    width: 100%;
+}
 /***************************************************** SCROLL ****************************************************/
 .scroll-to-top {
     position: fixed;
@@ -237,15 +377,14 @@ nav{
     .logoimg{ 
         width: 40%;
     }
-
-    
 }
+
 @media screen and (min-width:768px){
     .productCard{
         max-width: none;
     }
   
-    .allProducts ,.allBandsArticle{
+    .allProducts .card , .allBandsArticle, .otherProducts{
         display: flex;
         flex-direction: row;
         flex-wrap: wrap
@@ -268,22 +407,18 @@ nav{
   
     .artistArticle div{
         flex-basis: 45%;
-
     }
 
     .articleProductPage{
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
-        
+        justify-content: space-between;   
     }
 
     .articleProductPage div{
         flex-basis: 48%;
-        margin-top: 0px;
-        
-    }
-    
+        margin-top: 0px; 
+    } 
 } 
 
 @media screen and (min-width:900px){
@@ -294,11 +429,20 @@ nav{
     .bandImg{
         max-width: 360px;
     }
+
+    .menu-toggle{
+        display: none;
+    }
+
+    #myBtn{
+        display: flex;
+    }
+
 }
 
 @media screen and (min-width:1025px){
     .logoimg{ 
-        width:30%;
+        width:20%;
     }
 
     .container{
@@ -321,7 +465,6 @@ nav{
     }
 
     .ImgProduct{
-       
         width: 80%;  
     }
 }
@@ -334,8 +477,6 @@ nav{
     .productCard{
         flex-basis: 19.8%; 
     }
-
-   
 }
 
 @media screen and (min-width:1800px){
@@ -348,13 +489,9 @@ nav{
     }
 
     .articleProductPage{
-      
-        justify-content: space-around;
-        
+        justify-content: space-around;  
     }
     .articleProductPage div{
-        flex-basis: 40%;
-        
+        flex-basis: 40%;  
     }
-
 }

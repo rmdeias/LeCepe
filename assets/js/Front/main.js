@@ -12,7 +12,11 @@ function scrollFunction() {
     mybutton.style.display = "none";
   } else {
 
-    mybutton.style.display = "flex";
+   
+    if(window.screen.width > 900){
+      mybutton.style.display = "flex";
+    }
+   
   }
 
 }

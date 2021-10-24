@@ -56,7 +56,7 @@ use Controllers\Entity\Product;
 
         $path= "../../assets/images/bands/".$check["bandSlug"]."/". $entity->getSlug()."/";
         
-        if($check["title"] != $_POST["title"] || $check["bandSlug"] == $checkband["bandSlug"]){
+        if($check["title"] != $_POST["title"] && $check["bandSlug"] == $checkband["bandSlug"]){
             //copie dossier
             copyDirectory(
                 "../../assets/images/bands/".$oldCheck["bandSlug"]."/".$check["slug"],

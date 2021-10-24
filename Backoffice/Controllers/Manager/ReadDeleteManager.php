@@ -32,6 +32,13 @@ class ReadDeleteManager
      * @var string
      */
     private $column;
+
+      /**
+     * where
+     *
+     * @var string
+     */
+    private $where;
       
     public function __construct($table)
     {
@@ -71,6 +78,7 @@ class ReadDeleteManager
         $this->column= $column;
     }
 
+    
     /**
      * getColumn
      *
@@ -81,6 +89,27 @@ class ReadDeleteManager
         return $this->column;
     }
 
+     /**
+     * setColumn
+     *
+     * @param  string $column
+     * @return void
+     */
+    public function setWhere($where)
+    {
+        $this->where= $where;
+    }
+
+    
+    /**
+     * getWhere
+     *
+     * @return string
+     */
+    public function getWhere()
+    {
+        return $this->where;
+    }
 
     public function read($column)
     {
@@ -107,11 +136,12 @@ class ReadDeleteManager
         return  $this->query->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function readInnerJoin($column)
+    public function readInnerJoinAllReleases($column, $where)
     {
         $column = $this->setColumn($column);
+        $where = $this->setWhere($where);
        
-        $this->query=  $this->pdo->prep('SELECT ' . $this->getColumn() . ' from ' . $this->getTable(). ' INNER JOIN bands ON products.id_band = bands.id');
+        $this->query=  $this->pdo->prep('SELECT ' . $this->getColumn() . ' from ' . $this->getTable(). ' INNER JOIN bands ON products.id_band = bands.id '. $this->getWhere());
         
         $this->query->execute();
        

@@ -37,33 +37,32 @@
            <hr>
            
            <section >
-            <h2>Products from <?= $info["name"] ?></h2>
-         
-            <div class ="allProducts">
-          
-            <?php foreach ($products as $product): ?>
+                <h2>Products from <?= $info["name"] ?></h2>
+            
+                <div class ="allProducts">
+                    <div class = "card">
 
-                
-                <article class = "productCard">
-                    <a href="Product&name=<?= $id[0]."-".$product["id"]."-".$product["bandSlug"]."-".$product["slug"] ?>">
-                        <img class=" img imgProduct" src="./assets/images/bands/<?= $product["bandSlug"]."/".$product["slug"]."/".$product["image"] ?>">
-                        <img class="cache imgAlt imgProduct" src="./assets/images/bands/<?= $product["bandSlug"]."/".$product["slug"]."/".$product["imageAlt"] ?>">
-                    </a>
-                    <div class="description">
-                        <h1><a href="#"  class="band"><?= $product["name"] ?></a></h1>
-                        <h2><a href="Product&name=<?= $id[0]."-".$product["id"]."-".$product["bandSlug"]."-".$product["slug"] ?>" class="title"><?= $product["title"] ?></a></h2>
-                        <p>Release Date: <?= $product["dateSortie"] ?></p>
-                        <p>type: <?= $product["type"] ?></p>
-                        <p>Price: <?= $product["price"] ?>$</p>
-                       
+                        <?php foreach ($products as $product): ?>
+                            <article class = "productCard">
+                                <a href="Product&name=<?= $id[0]."-".$product["id"]."-".$product["bandSlug"]."-".$product["slug"] ?>">
+                                    <img class=" img imgProduct" src="./assets/images/bands/<?= $product["bandSlug"]."/".$product["slug"]."/".$product["image"] ?>">
+                                    <img class="cache imgAlt imgProduct" src="./assets/images/bands/<?= $product["bandSlug"]."/".$product["slug"]."/".$product["imageAlt"] ?>">
+                                </a>
+                                <div class="description">
+                                    <h1><a href="#"  class="band"><?= $product["name"] ?></a></h1>
+                                    <h2><a href="Product&name=<?= $id[0]."-".$product["id"]."-".$product["bandSlug"]."-".$product["slug"] ?>" class="title"><?= $product["title"] ?></a></h2>
+                                    <p>Release Date: <?= $product["dateSortie"] ?></p>
+                                    <p>type: <?= $product["type"] ?></p>
+                                    <p>Price: <?= $product["price"] ?>$</p>
+                                
+                                </div>
+                            </article>
+                        <?php endforeach; ?>
+
                     </div>
-                </article>
-            <?php endforeach; ?>
-         
-            </div>
+                </div>
             
-            
-        </section>
+            </section>
            
         </div>
    </main>

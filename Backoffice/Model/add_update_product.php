@@ -75,7 +75,7 @@ use Controllers\Entity\Product;
                deleteDirectory("../../assets/images/bands/".$oldCheck["bandSlug"]."/".$entity->getSlug()."/".$check["image"]);
             }
             
-            uploadPhoto($path,"image");
+            uploadPhoto($path,"image",500,500);
             $updateInfo->updateImage($entity);
         }
 
@@ -86,7 +86,7 @@ use Controllers\Entity\Product;
             
                 deleteDirectory("../../assets/images/bands/".$oldCheck["bandSlug"]."/".$entity->getSlug()."/".$check["imageAlt"]);
             }
-            uploadPhoto($path,"imageAlt");
+            uploadPhoto($path,"imageAlt",500,500);
             var_dump("ALT ".$path);
             $updateInfo->updateImageAlt($entity);
         }
@@ -110,8 +110,8 @@ use Controllers\Entity\Product;
         $bandSlug = $readBandSlug->readById('bands.bandSlug,bands.id',$entity->getIdBand() );      
         $path ="../../assets/images/bands/".$bandSlug["bandSlug"]."/".$entity->getSlug()."/";
        
-        uploadPhoto($path,"image");
-        uploadPhoto($path,"imageAlt"); 
+        uploadPhoto($path,"image",500,500);
+        uploadPhoto($path,"imageAlt",500,500); 
     }
 
 header('Location: ../Controllers/ProductGestion.php');

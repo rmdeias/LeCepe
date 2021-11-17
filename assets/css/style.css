@@ -12,7 +12,6 @@ body{
     min-width: 280px;
     font-size: 1rem;
     font-family: "Gilmer", sans-serif;
-
    
 }
 
@@ -191,20 +190,31 @@ header{
 
 }
 /********************************************** allProducts SECTION  ***************************/
-/*
-.allProducts .card  {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}*/
 
-.allProducts .card h1,.allProducts .card h2{
+.description  {
+    padding: 10px;
+}
+
+.allProducts .card h1{
     font-size:unset;
-    margin:0;
+    margin: 0px;
+    margin-bottom: 5px;
+}
+
+.bandName:hover{
+    color: #04a8ff;
+   
+}
+.albumTitle:hover{
+    color: #e2612c;
+   
 }
 
 .allProducts .card h2{
-    font-weight:unset ;
+    font-size:unset;
+    
+    margin-top: 0px;
+    margin-bottom: 3px;
 }
 
 .productCard{
@@ -220,7 +230,6 @@ header{
 }
 
 .description{
-    margin-top:10px;
     text-align: left;
 }
 
@@ -233,11 +242,10 @@ header{
 }
 
 /********************************************* All Band ***********************************************************/
-.allBands{
-    text-align: center;  
-}
+
 .allBandsArticle article{
     margin-top: 50px;
+    text-align: center; 
     
 }
 .bandImg{
@@ -352,7 +360,7 @@ header{
     height: 50px;
     text-align: center;
     color: white;
-    background: rgba(52, 58, 64, 0.5);
+    background: rgba(179,240, 209, 0.7);
     line-height: 45px;
 }
 
@@ -361,7 +369,7 @@ header{
 }
 
 .scroll-to-top:hover {
-    background: #343a40;
+    background: #b3f0d1;
 }
 
 .scroll-to-top i {
@@ -435,15 +443,28 @@ header{
     }
 
     #myBtn{
-        display: flex;
+       display: flex;
+        
     }
+    .sticky{
+        
+        position: fixed;
+        top: 0;
+        width: 100%
+    
+    } 
+    .marginTopMain{
 
+        margin-top: 500px;
+        
+    }
 }
 
 @media screen and (min-width:1025px){
-    .logoimg{ 
+   .logoimg{ 
         width:20%;
     }
+  
 
     .container{
         margin-top: 160px;

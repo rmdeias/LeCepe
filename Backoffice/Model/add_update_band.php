@@ -62,7 +62,7 @@ use Controllers\Entity\Band;
                 deleteDirectory("../../assets/images/bands/".$entity->getSlug()."/".$check["imageBand"]);
             }
         
-            uploadPhoto($path,"imageBand");
+            uploadPhoto($path,"imageBand",759,500);
             $updateInfo->update($entity); 
         }
         // Si aucune saisie pour photo
@@ -74,7 +74,7 @@ use Controllers\Entity\Band;
     // Creation d'une nouvelle ligne 
     else{
         
-        uploadPhoto($path,"imageBand");
+        uploadPhoto($path,"imageBand",759,500);
         $insertInfo = new BandManager('bands');
         $insertInfo->create($entity);
     }

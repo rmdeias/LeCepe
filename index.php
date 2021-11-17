@@ -28,6 +28,10 @@ switch ($_GET["page"]) {
     case"Product":
         $controller = "./Front/Controllers/Product";
         break;
+
+    case"Merch":
+        $controller = "./Front/Controllers/Merch";
+        break;
 }
 /*
 if (!$controller) {

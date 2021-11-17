@@ -2,7 +2,7 @@
 use Controllers\Manager\ReadDeleteManager;
 require_once 'Backoffice/Controllers/Manager/ReadDeleteManager.php';
      
-    $title = "Artists";
+    $title = "Le Cépe Records - Artists";
 
     $readAllInfo = new ReadDeleteManager('bands');
     $bands = $readAllInfo->read('*');

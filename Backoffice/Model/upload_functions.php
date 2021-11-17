@@ -1,7 +1,9 @@
 <?php
 
-function uploadPhoto($path, $postImage)// Vérifie si le fichier a été uploadé sans erreur.
+function uploadPhoto($path, $postImage, $resizedWidth, $resizedHeight)// Vérifie si le fichier a été uploadé sans erreur.
 {
+    $newWidth = $resizedWidth;
+    $newHeight = $resizedHeight;
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
        
         if (isset($_FILES[$postImage]) && $_FILES[$postImage]["error"] == 0) {
@@ -37,12 +39,20 @@ function uploadPhoto($path, $postImage)// Vérifie si le fichier a été upload�
                     {
                         mkdir($path,0777,true); // création dossier
                     }
-                   
-                    // ajout de la photo de couverture dans le dossier
+                      // resize Image
+                    list($width, $height, $type) = getimagesize( $_FILES[$postImage]["tmp_name"]);
+                    $thumb = imagecreatetruecolor($newWidth, $newHeight);
+                    $source = imagecreatefromjpeg( $_FILES[$postImage]["tmp_name"]);
+                    imagecopyresampled($thumb, $source, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+                    imagejpeg($thumb, $_FILES[$postImage]["tmp_name"]);
+                 
+                    // ajout de la photo le dans le dossier
                     move_uploaded_file(
                         $_FILES[$postImage]["tmp_name"],
                         $path.$filename 
                     ); 
+
+                   
                 
                     echo "Votre fichier a été téléchargé avec succès.";
                 }

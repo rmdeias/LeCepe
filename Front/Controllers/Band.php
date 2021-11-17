@@ -18,7 +18,7 @@ require_once 'Backoffice/Controllers/Manager/ReadDeleteManager.php';
         
       
       
-        $title = $info["name"];
+        $title ="Le Cépe Records - ". $info["name"];
         require "./Front/Views/Band.phtml";
         require "./Front/Views/Layout.phtml";
     }

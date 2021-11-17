@@ -10,7 +10,7 @@ if (isset($_SESSION["admin"])) {
     $title = "Gestion des Groupes";
 
     $readAllInfo = new ReadDeleteManager('bands');
-    $infos = $readAllInfo->read('*');
+    $infos = $readAllInfo->read('*','');
  
     require "../views/BandGestion.phtml";
     require "../views/Layout.phtml";

@@ -11,8 +11,6 @@ const isFirefox = typeof InstallTrigger !== 'undefined';
 window.onscroll = function() {scrollFunction()};
 function scrollFunction() {
    
-  if(!isFirefox){
-    
     if(window.screen.width > 900){
         
       mybutton.classList.remove("sticky");
@@ -27,7 +25,6 @@ function scrollFunction() {
       } 
     
     }
-  }
 }
 
 /*********************************Change Image Product Hover*************************************************/

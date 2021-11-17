@@ -5,14 +5,12 @@ require_once 'Manager/ReadDeleteManager.php';
 
 // empeche de revenir sur cette page apres déconnection
 if (isset($_SESSION["admin"])) {
-    
     $_SESSION['redirect_url'] = $_SERVER['PHP_SELF']; // redirection apres validation formulaire
-
-    $chooseProductsToDisplay = "Products";
-    $title = "Gestion des Produits";
+    $chooseProductsToDisplay = "Merch";
+    $title = "Gestion Merchandising";
 
     $readAllInfo = new ReadDeleteManager('products');
-    $infos = $readAllInfo->readInnerJoinAllReleases('products.*,bands.name,bands.bandSlug',"WHERE bands.name !='LeCepeRecords Merch'");
+    $infos = $readAllInfo->readInnerJoinAllReleases('products.*,bands.name,bands.bandSlug',"WHERE bands.name ='LeCepeRecords Merch'");
   
     require "../views/ProductGestion.phtml";
     require "../views/Layout.phtml";

@@ -7,7 +7,7 @@ require_once 'Manager/ReadDeleteManager.php';
 if (isset($_SESSION['admin'])) {
     
     $read = new ReadDeleteManager('bands');
-    $listeBands = $read->read('id,name');
+    $listeBands = $read->read('id,name ','');
     
     
     
@@ -24,6 +24,7 @@ if (isset($_SESSION['admin'])) {
 
     require "../views/FormAddUpdateProducts.phtml";
     require "../views/Layout.phtml";
+   
 }
 else{
     http_response_code(404);

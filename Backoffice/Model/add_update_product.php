@@ -113,8 +113,11 @@ use Controllers\Entity\Product;
         uploadPhoto($path,"image",500,500);
         uploadPhoto($path,"imageAlt",500,500); 
     }
-
-header('Location: ../Controllers/ProductGestion.php');
+ 
+// go to previous page
+$redirect_url = (isset($_SESSION['redirect_url'])) ? $_SESSION['redirect_url'] : '/';
+unset($_SESSION['redirect_url']);
+header("Location: $redirect_url", true, 303);
 exit;
 
 ?>  

@@ -5,7 +5,7 @@
        <div class="container">
             
            <section>
-                <h1 class="artistName"> <?= $info["name"] ?></h1>
+                <h1 class="artistName"> <?= $leCepeRecordsArtist["name"] ?></h1>
                 
                 
                 <article class="artistArticle">
@@ -14,20 +14,20 @@
                     <div class="artistsDescription">
                         
                         
-                        <img class="artistImg"src=./assets/images/bands/<?= $info["bandSlug"]."/".$info["imageBand"] ?>>
+                        <img class="artistImg"src=./assets/images/bands/<?= $leCepeRecordsArtist["bandSlug"]."/".$leCepeRecordsArtist["imageBand"] ?>>
             
-                        <p><?= $info["description"] ?></p>
+                        <p><?= $leCepeRecordsArtist["description"] ?></p>
                         <ul class="artistLinks">
-                            <li><a class="facebook" href="<?= $info["linkFB"] ?>"><i class="fab fa-facebook-square"></i></a></li>
-                            <li><a  href="<?= $info["linkInsta"] ?>"><img class="insta" src="./assets/images/instagram_ig_logo_icon_134013.svg" class="fab fa-youtube"></a></li>
-                            <li><a class="youtube" href="<?= $info["linkYoutube"] ?>"><i class="fab fa-youtube"></i></a></li>
+                            <li><a class="facebook" href="<?= $leCepeRecordsArtist["linkFB"] ?>"><i class="fab fa-facebook-square"></i></a></li>
+                            <li><a  href="<?= $leCepeRecordsArtist["linkInsta"] ?>"><img class="insta" src="./assets/images/instagram_ig_logo_icon_134013.svg" class="fab fa-youtube"></a></li>
+                            <li><a class="youtube" href="<?= $leCepeRecordsArtist["linkYoutube"] ?>"><i class="fab fa-youtube"></i></a></li>
                         </ul>
 
                     </div>
                     
                     <div class="frames">
-                        <?= htmlspecialchars_decode($info["iframeBandcamp"]) ?>
-                        <?= htmlspecialchars_decode($info["iframeYoutube"]) ?>
+                        <?= htmlspecialchars_decode($leCepeRecordsArtist["iframeBandcamp"]) ?>
+                        <?= htmlspecialchars_decode($leCepeRecordsArtist["iframeYoutube"]) ?>
                     </div>
 
 
@@ -37,23 +37,23 @@
            <hr>
            
            <section >
-                <h2>Products from <?= $info["name"] ?></h2>
+                <h2>Products from <?= $leCepeRecordsArtist["name"] ?></h2>
             
                 <div class ="allProducts">
                     <div class = "card">
 
-                        <?php foreach ($products as $product): ?>
+                        <?php foreach ($leCepeRecordsArtistProducts as $leCepeRecordsArtistProduct): ?>
                             <article class = "productCard">
-                                <a href="Product&name=<?= $id[0]."-".$product["id"]."-".$product["bandSlug"]."-".$product["slug"] ?>">
-                                    <img class=" img imgProduct" src="./assets/images/bands/<?= $product["bandSlug"]."/".$product["slug"]."/".$product["image"] ?>">
-                                    <img class="cache imgAlt imgProduct" src="./assets/images/bands/<?= $product["bandSlug"]."/".$product["slug"]."/".$product["imageAlt"] ?>">
+                                <a href="Product&name=<?= $id[0]."-".$leCepeRecordsArtistProduct["id"]."-".$leCepeRecordsArtistProduct["bandSlug"]."-".$leCepeRecordsArtistProduct["slug"] ?>">
+                                    <img class=" img imgProduct" src="./assets/images/bands/<?= $leCepeRecordsArtistProduct["bandSlug"]."/".$leCepeRecordsArtistProduct["slug"]."/".$leCepeRecordsArtistProduct["image"] ?>">
+                                    <img class="cache imgAlt imgProduct" src="./assets/images/bands/<?= $leCepeRecordsArtistProduct["bandSlug"]."/".$leCepeRecordsArtistProduct["slug"]."/".$leCepeRecordsArtistProduct["imageAlt"] ?>">
                                 </a>
                                 <div class="description">
-                                    <h1><a href="#"  class="band"><?= $product["name"] ?></a></h1>
-                                    <h2><a href="Product&name=<?= $id[0]."-".$product["id"]."-".$product["bandSlug"]."-".$product["slug"] ?>" class="title"><?= $product["title"] ?></a></h2>
-                                    <p>Release Date: <?= $product["dateSortie"] ?></p>
-                                    <p>type: <?= $product["type"] ?></p>
-                                    <p>Price: <?= $product["price"] ?>$</p>
+                                    <h1><a href="#"  class="band"><?= $leCepeRecordsArtistProduct["name"] ?></a></h1>
+                                    <h2><a href="Product&name=<?= $id[0]."-".$leCepeRecordsArtistProduct["id"]."-".$leCepeRecordsArtistProduct["bandSlug"]."-".$leCepeRecordsArtistProduct["slug"] ?>" class="title"><?= $leCepeRecordsArtistProduct["title"] ?></a></h2>
+                                    <p>Release Date: <?= $leCepeRecordsArtistProduct["dateSortie"] ?></p>
+                                    <p>type: <?= $leCepeRecordsArtistProduct["type"] ?></p>
+                                    <p>Price: <?= $leCepeRecordsArtistProduct["price"] ?>$</p>
                                 
                                 </div>
                             </article>

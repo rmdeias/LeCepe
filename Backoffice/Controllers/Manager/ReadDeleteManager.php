@@ -111,12 +111,13 @@ class ReadDeleteManager
         return $this->where;
     }
 
-    public function read($column)
+    public function read($column, $where)
     {
         
         $column = $this->setColumn($column);
+        $where = $this->setWhere($where);
 
-        $this->query=  $this->pdo->prep('SELECT ' . $this->getColumn() . ' from ' . $this->getTable());
+        $this->query=  $this->pdo->prep('SELECT ' . $this->getColumn() . ' from ' . $this->getTable(). ' '.$this->getWhere());
 
         $this->query->execute();
 

@@ -27,7 +27,7 @@
             <input class="form-control" type="file" id="imageAlt" name="imageAlt" <?php if(isset($info)): ?> value="<?= $info["imageAlt"] ?>" <?php endif; ?>>
             
             <label>Date: </label>
-            <input class="form-control" type="text" id="dateSortie" name="dateSortie" <?php if(isset($info)): ?> value="<?= $info["dateSortie"] ?>" <?php endif; ?>>
+            <input class="form-control" placeholder="inutile pour le merchandising" type="text" id="dateSortie" name="dateSortie" <?php if(isset($info)): ?> value="<?= $info["dateSortie"] ?>" <?php endif; ?>>
     
             <label>Type: </label>
             <input class="form-control" type="text" id="type" name="type" <?php if(isset($info)): ?> value="<?= $info["type"] ?>" <?php endif; ?>> 
@@ -37,9 +37,9 @@
         
             <label>Description: </label>
             <textarea class="form-control " type="text" id="description" name="description"><?php if(isset($info)): ?> <?= $info["description"] ?> <?php endif; ?> </textarea>
-             
+  
             <label>	Iframe Bandcamp: </label>
-            <input class="form-control " type="text" id="iframeBandcamp" name="iframeBandcamp" <?php if(isset($info)): ?> value="<?= $info["iframeBandcamp"] ?>" <?php endif; ?>>
+            <input class="form-control " placeholder="inutile pour le merchandising" type="text" id="iframeBandcamp" name="iframeBandcamp" <?php if(isset($info)): ?> value="<?= $info["iframeBandcamp"] ?>" <?php endif; ?>>
 
             <label>	Link Bandcamp: </label>
             <input class="form-control " type="text" id="linkBandcamp" name="linkBandcamp" <?php if(isset($info)): ?> value="<?= $info["linkBandcamp"] ?>" <?php endif; ?>>
@@ -48,12 +48,12 @@
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="dispo" id="New"   value="New"<?php if(isset($info) && $info["dispo"]=="New"): ?>checked<?php endif; ?>>
                 <label class="form-check-label" for="New">New</label>
-                </div>
-                <div class="form-check form-check-inline">
+            </div>
+            <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="dispo" id="Available"   value="Available"<?php if(isset($info) && $info["dispo"]=="Available"): ?>checked<?php endif; ?>>
                 <label class="form-check-label" for="Available">Available</label>
-                </div>
-                <div class="form-check form-check-inline">
+            </div>
+            <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="dispo" id="SoldOut"   value="Sold Out"<?php if(isset($info) && $info["dispo"]=="Sold Out"): ?>checked<?php endif; ?>>
                 <label class="form-check-label" for="SoldOut">Sold Out</label>
             </div>

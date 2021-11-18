@@ -245,11 +245,10 @@ header{
 
 .allBandsArticle article{
     margin-top: 50px;
-    text-align: center; 
-    
+    text-align: center;   
 }
 .bandImg{
-    max-width: 300px;
+    width:100%;
     border-radius: 10%;
 }
 /***************************************************** Page artist ************************************************/

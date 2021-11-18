@@ -7,9 +7,12 @@ require_once 'Manager/ReadDeleteManager.php';
 if (isset($_SESSION['admin'])) {
     
     $read = new ReadDeleteManager('bands');
-    $listeBands = $read->read('id,name ','');
+    $listeBands = $read->read('id,name',"WHERE name != 'LeCepeRecords Merch'");
+
+    $merchandising = $read->read('id,name',"WHERE name = 'LeCepeRecords Merch'");
     
-    
+   // var_dump($merchandising);
+    //die();
     
     if(isset($_GET["id"])) { 
         

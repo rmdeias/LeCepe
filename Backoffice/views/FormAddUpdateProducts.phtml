@@ -6,29 +6,40 @@
         
         <div class="form-row col-6">
 
-
             <label>Titre: </label>
             <input  class="form-control" type="text" id="title" name="title" <?php if(isset($info)): ?> value="<?= $info["title"] ?>" <?php endif; ?>>
             
-            <label>Groupe: </label>
-            <select name="bands" id="bands" class="form-control" required>
-
+            <?php if($_SESSION['redirect_url'] == '/LeCepe/Backoffice/Controllers/ProductGestion.php'): ?>
+            
+                <label>Groupe: </label>
+                <select name="bands" id="bands" class="form-control" required>
                     <option value="">Selectionner un groupe</option>
-                    <?php foreach ($listeBands as $band): ?>
-                        <option value="<?= $band["id"] ?>" <?php if (isset($info) && $info["id_band"] == $band["id"]): ?> selected <?php endif; ?>><?= $band["name"] ?></option>
-                    <?php endforeach; ?>
 
-            </select>
+                        <?php foreach ($listeBands as $band): ?>
+                            <option value="<?= $band["id"] ?>" <?php if (isset($info) && $info["id_band"] == $band["id"]): ?> selected <?php endif; ?>><?= $band["name"] ?></option>
+                        <?php endforeach; ?>
+
+                </select>
+
+            <?php else: ?>
+
+                <label>Merchandising: </label>
+                    <select name="bands" id="bands" class="form-control" required>
+
+                    <?php foreach ($merchandising as $merch): ?>
+                        <option value="<?= $merch["id"] ?>" <?php if (isset($info) && $info["id_band"] == $merch["id"]): ?> selected <?php endif; ?>><?= $merch["name"] ?></option>
+                    <?php endforeach; ?>  
+
+                    </select>
+                
+            <?php endif; ?>
 
             <label>Image: </label>
             <input class="form-control" type="file" id="image" name="image" <?php if(isset($info)): ?> value="<?= $info["image"] ?>" <?php endif; ?>>
             
             <label>Image Aternative: </label>
             <input class="form-control" type="file" id="imageAlt" name="imageAlt" <?php if(isset($info)): ?> value="<?= $info["imageAlt"] ?>" <?php endif; ?>>
-            
-            <label>Date: </label>
-            <input class="form-control" placeholder="inutile pour le merchandising" type="text" id="dateSortie" name="dateSortie" <?php if(isset($info)): ?> value="<?= $info["dateSortie"] ?>" <?php endif; ?>>
-    
+              
             <label>Type: </label>
             <input class="form-control" type="text" id="type" name="type" <?php if(isset($info)): ?> value="<?= $info["type"] ?>" <?php endif; ?>> 
             
@@ -38,13 +49,25 @@
             <label>Description: </label>
             <textarea class="form-control " type="text" id="description" name="description"><?php if(isset($info)): ?> <?= $info["description"] ?> <?php endif; ?> </textarea>
   
-            <label>	Iframe Bandcamp: </label>
-            <input class="form-control " placeholder="inutile pour le merchandising" type="text" id="iframeBandcamp" name="iframeBandcamp" <?php if(isset($info)): ?> value="<?= $info["iframeBandcamp"] ?>" <?php endif; ?>>
+            <?php if($_SESSION['redirect_url'] == '/LeCepe/Backoffice/Controllers/ProductGestion.php'): ?>
 
+                <label>Date: </label>
+                <input class="form-control" type="text" id="dateSortie" name="dateSortie" <?php if(isset($info)): ?> value="<?= $info["dateSortie"] ?>" <?php endif; ?>>
+                <label>	Iframe Bandcamp: </label>
+                <input class="form-control "  type="text" id="iframeBandcamp" name="iframeBandcamp" <?php if(isset($info)): ?> value="<?= $info["iframeBandcamp"] ?>" <?php endif; ?>>
+
+            <?php else: ?>
+
+                <label class ="d-none">Date: </label>
+                <input class="form-control d-none" placeholder ="Inutile pour le merchandising" type="text" id="dateSortie" name="dateSortie" <?php if(isset($info)): ?> value="<?= $info["dateSortie"] ?>" <?php endif; ?>>
+                <label class = "d-none">Iframe Bandcamp: </label>
+                <input class="form-control d-none " placeholder ="Inutile pour le merchandising" type="text" id="iframeBandcamp" name="iframeBandcamp" <?php if(isset($info)): ?> value="<?= $info["iframeBandcamp"] ?>" <?php endif; ?>>
+
+            <?php endif; ?>
+            
             <label>	Link Bandcamp: </label>
             <input class="form-control " type="text" id="linkBandcamp" name="linkBandcamp" <?php if(isset($info)): ?> value="<?= $info["linkBandcamp"] ?>" <?php endif; ?>>
             
-           
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="dispo" id="New"   value="New"<?php if(isset($info) && $info["dispo"]=="New"): ?>checked<?php endif; ?>>
                 <label class="form-check-label" for="New">New</label>

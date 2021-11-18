@@ -1,5 +1,3 @@
-
-
 /*********************************Scroll to hide logo and fix navbar*************************************************/
 
 var logo = document.getElementById("logo");
@@ -49,8 +47,6 @@ imgTab.forEach(
   
   function (image, index) {
 
-   
-
     //For pc
     image[0].addEventListener("mouseover",function() 
     {
@@ -94,7 +90,7 @@ function LinktoInner(info)
   return result
 }
 
-function LinkOver(overLink, message){
+function LinkOver(overLink, message, color){
 
   overLink.forEach(
   
@@ -115,11 +111,13 @@ function LinkOver(overLink, message){
       //For phone
       link.addEventListener("touchmove",function() 
       {
+        link.style.color= color;
         link.textContent = message;
       });
   
       link.addEventListener("touchend",function() 
       {
+        link.style.color= "black";
         link.textContent = name;
       });
     
@@ -134,6 +132,6 @@ var albumsTitle = document.getElementsByClassName("albumTitle");
 var bandName = LinktoInner(bandsName);
 var albumTitle = LinktoInner(albumsTitle);
  
-LinkOver(bandName, "Go to Artist page");
-LinkOver(albumTitle, "Go to Album page");
+LinkOver(bandName, "Go to Artist page","#04a8ff");
+LinkOver(albumTitle, "Go to Album page","#e2612c");
 

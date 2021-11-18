@@ -29,6 +29,11 @@ use Controllers\Entity\Product;
         $entity->setSlug(strtolower(str_replace(["&","/"], "and", $_POST["title"])));
         $entity->setSlug(str_replace(" ", "-", $entity->getSlug()));
     }
+    elseif(strpos($_POST["title"] , "é" )|| strpos($_POST["title"] , "è" )){
+
+        $entity->setSlug(strtolower(str_replace(["é","è"], "e", $_POST["title"])));
+        $entity->setSlug(str_replace(" ", "-", $entity->getSlug()));
+    }
     else{
         $entity->setSlug(strtolower(str_replace(" ", "-", $_POST["title"])));
     }

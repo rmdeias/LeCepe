@@ -10,21 +10,27 @@
                     <img  class="imgAlt ImgProduct cache" src="./assets/images/bands/<?= $product["bandSlug"]."/".$product["slug"]."/".$product["imageAlt"] ?>">
                 </div>
                 <div class="refProduct">
-                    <h1 class="band"><?= $product["name"] ?></h1>
+
+                    <?php if ($product["name"] != "LeCepeRecords Merch"): ?>
+                        <h1 class="band"><?= $product["name"] ?></h1>
+                    <?php endif; ?>
+
                     <h2 class="title"><?= $product["title"] ?></h2>
-                    <p>Release Date: <?= $product["dateSortie"] ?></p>
+                    
+                    <?php if ($product["name"] != "LeCepeRecords Merch"): ?>
+                        <p>Release Date: <?= $product["dateSortie"] ?></p>
+                    <?php endif; ?>
+
                     <p>Type: <?= $product["type"] ?></p>
                     <p class="price"><?= $product["price"] ?>$</p>
                     <div class="divBuyButton"  >
                         <a class="buyButton" href="<?= $product["linkBandcamp"] ?>">Buy On BandCamp</a>
-
                     </div>
 
                     <div class="frames">
-                    <?= htmlspecialchars_decode($product["iframeBandcamp"]) ?> 
+                        <?= htmlspecialchars_decode($product["iframeBandcamp"]) ?> 
                     </div>
                    
-                    
                 </div>
                 
             </article>

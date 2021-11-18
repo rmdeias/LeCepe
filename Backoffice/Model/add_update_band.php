@@ -26,6 +26,11 @@ use Controllers\Entity\Band;
         $entity->setSlug(strtolower(str_replace(["&","/"], "and", $_POST["name"])));
         $entity->setSlug(str_replace(" ", "-", $entity->getSlug()));
     }
+    elseif(strpos($_POST["name"] , "é" ) || strpos($_POST["name"] , "è" ) ){
+
+        $entity->setSlug(strtolower(str_replace(["é","è"], "e", $_POST["name"])));
+        $entity->setSlug(str_replace(" ", "-", $entity->getSlug()));
+    }
     else{
         $entity->setSlug(strtolower(str_replace(" ", "-", $_POST["name"])));
     }

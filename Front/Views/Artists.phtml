@@ -2,24 +2,24 @@
     <main class="allBandsPage">
         <div class="container">
             <section class="allBands">
-            <div>
-                <h1>LE CEPE RECORDS ARTISTS</h1>
-                <hr>
-            </div>
+                <div>
+                    <h1>LE CEPE RECORDS ARTISTS</h1>
+                    <hr>
+                </div>
                 
                 <div class="allBandsArticle" >
-                <?php foreach ($bands as $band): ?>
-                    <article>
-              
-                        <a href="Band&name=<?= $band["id"]."-".$band["bandSlug"] ?>" ><img class ="bandImg" src="./assets/images/bands/<?= $band["bandSlug"]."/".$band["imageBand"] ?>"></a>
-                        <h4><?= $band["name"] ?></h4>
-                    
-                    </article>
-                <?php endforeach; ?>
+                    <?php foreach ($bands as $band): ?>
+                        <article>
+
+                            <a href="Band&name=<?= $band["id"]."-".$band["bandSlug"] ?>" ><img class ="bandImg" src="./assets/images/bands/<?= $band["bandSlug"]."/".$band["imageBand"] ?>"></a>
+                            <h4><?= $band["name"] ?></h4>
+
+                        </article>
+                    <?php endforeach; ?>
 
                 </div>
             
-        </section>
+            </section>
 
         </div>
     </main>

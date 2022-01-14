@@ -12,7 +12,7 @@ if (isset($_SESSION["admin"])) {
     $title = "Gestion des Produits";
 
     $readAllInfo = new ReadDeleteManager('products');
-    $infos = $readAllInfo->readInnerJoinAllReleases('products.*,bands.name,bands.bandSlug',"WHERE bands.name !='LeCepeRecords Merch'");
+    $infos = $readAllInfo->readInnerJoinAllReleases('products.*,bands.name,bands.bandSlug',"WHERE bands.name !='Le Cepe Records Merch'");
   
     require "../views/ProductGestion.phtml";
     require "../views/Layout.phtml";

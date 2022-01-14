@@ -5,7 +5,7 @@ require_once 'Backoffice/Controllers/Manager/ReadDeleteManager.php';
     $title = "Le Cépe Records - Artists";
 
     $readAllInfo = new ReadDeleteManager('bands');
-    $bands = $readAllInfo->read('*',"WHERE name != 'LeCepeRecords Merch'");
+    $bands = $readAllInfo->read('*',"WHERE name != 'Le Cepe Records Merch'");
     
     if(isset($_GET["id"])) { 
         

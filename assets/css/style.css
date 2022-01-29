@@ -362,7 +362,7 @@ header{
     height: 50px;
     text-align: center;
     color: white;
-    background: rgba(179,240, 209, 0.7);
+    background: rgba(255, 171, 0, 0.5);
     line-height: 45px;
 }
 
@@ -371,7 +371,7 @@ header{
 }
 
 .scroll-to-top:hover {
-    background: #b3f0d1;
+    background: rgba(255, 171, 0, 0.9);
 }
 
 .scroll-to-top i {

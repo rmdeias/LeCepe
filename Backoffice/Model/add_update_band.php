@@ -39,7 +39,6 @@ if(isset($_POST["id"])){
     $updateInfo = new BandManager('bands');
     $entity->setId($_POST["id"]);
 
-
     if($check["name"] != $_POST["name"]){
         //copie dossier
         $devFunction->copyDirectory(

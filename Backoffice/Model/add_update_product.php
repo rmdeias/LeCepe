@@ -16,7 +16,15 @@ $entity = new Product();
 $devFunction = new DevFunctions();
 
 $entity->setImage("le-cepe-records-".$_FILES["image"]["name"]);
-$entity->setImageAlt("le-cepe-records-".$_FILES["imageAlt"]["name"]);
+
+//si pas d'image Alt
+if ($_FILES["imageAlt"]["name"] == ""){
+    $entity->setImageAlt("le-cepe-records-".$_FILES["image"]["name"]);
+}
+else{
+    $entity->setImageAlt("le-cepe-records-alt-".$_FILES["imageAlt"]["name"]);
+}
+
 $entity->setTitle($_POST["title"]);
 $entity->setDate($_POST["dateSortie"]);
 $entity->setType($_POST["type"]);
@@ -53,7 +61,7 @@ if(isset($_POST["id"])) {
     $path= "../../assets/images/bands/".$check["bandSlug"]."/". $entity->getSlug()."/";
     
     if($check["title"] != $_POST["title"] && $check["bandSlug"] == $checkband["bandSlug"]){
-        //copie dossier
+        //copie dossier avec le nouveau path
         $devFunction->copyDirectory(
             "../../assets/images/bands/".$oldCheck["bandSlug"]."/".$check["slug"],
             "../../assets/images/bands/".$check["bandSlug"]."/". $entity->getSlug()
@@ -66,24 +74,23 @@ if(isset($_POST["id"])) {
     if( $_FILES["image"]["name"] !== ""){ 
         
         //suprimme l'ancienne image dans le nouveau dossier
-        if( $check["image"] !== ""){ 
+        if( $check["image"] !== "" && $check["image"] !== $check["imageAlt"] ){ 
         
             $devFunction->deleteDirectory("../../assets/images/bands/".$oldCheck["bandSlug"]."/".$entity->getSlug()."/".$check["image"]);
         }
         
-        $devFunction->uploadPhoto($path,"image",500,500);
+        $devFunction->uploadPhoto($path,"le-cepe-records-","image",900,900);
         $updateInfo->updateImage($entity);
     }
 
-    elseif($_FILES["imageAlt"]["name"] !== ""){
+    elseif($_FILES["imageAlt"]["name"] !== "" ){
 
         //suprimme l'ancienne imageAlt dans le nouveau dossier
-        if( $check["imageAlt"] !== ""){ 
+        if( $check["imageAlt"] !== "" || $check["imageAlt"] !== $check["image"]){ 
         
             $devFunction->deleteDirectory("../../assets/images/bands/".$oldCheck["bandSlug"]."/".$entity->getSlug()."/".$check["imageAlt"]);
         }
-        $devFunction->uploadPhoto($path,"imageAlt",500,500);
-        var_dump("ALT ".$path);
+        $devFunction->uploadPhoto($path,"le-cepe-records-alt-","imageAlt",900,900);
         $updateInfo->updateImageAlt($entity);
     }
     
@@ -106,8 +113,13 @@ else{
     $bandSlug = $readBandSlug->readById('bands.bandSlug,bands.id',$entity->getIdBand() );      
     $path ="../../assets/images/bands/".$bandSlug["bandSlug"]."/".$entity->getSlug()."/";
     
-    $devFunction->uploadPhoto($path,"image",500,500);
-    $devFunction->uploadPhoto($path,"imageAlt",500,500); 
+    $devFunction->uploadPhoto($path,"le-cepe-records-","image",900,900);
+ 
+    //si pas d'image Alt
+    if ($_FILES["imageAlt"]["name"] !== ""){
+        $devFunction->uploadPhoto($path,"le-cepe-records-alt-","imageAlt",900,900); 
+    } 
+    
 }
  
 // go to previous page

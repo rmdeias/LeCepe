@@ -3,8 +3,9 @@ namespace Controllers\Manager;
 
 class DevFunctions {
 
-    public static function uploadPhoto($path, $postImage, $resizedWidth, $resizedHeight)// Vérifie si le fichier a été uploadé sans erreur.
+    public static function uploadPhoto($path,$prefix, $postImage, $resizedWidth, $resizedHeight)// Vérifie si le fichier a été uploadé sans erreur.
     {
+
         $newWidth = $resizedWidth;
         $newHeight = $resizedHeight;
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -16,7 +17,7 @@ class DevFunctions {
                     "gif" => "image/gif",
                     "png" => "image/png",
                 ); //tableau extension valide
-                $filename ="le-cepe-records-". $_FILES[$postImage]["name"];
+                $filename =$prefix. $_FILES[$postImage]["name"];
                 $filetype = $_FILES[$postImage]["type"];
                 $filesize = $_FILES[$postImage]["size"];
                 $ext = pathinfo($filename, PATHINFO_EXTENSION); //extension du fichier
@@ -45,7 +46,18 @@ class DevFunctions {
                         // resize Image
                         list($width, $height, $type) = getimagesize( $_FILES[$postImage]["tmp_name"]);
                         $thumb = imagecreatetruecolor($newWidth, $newHeight);
-                        $source = imagecreatefromjpeg( $_FILES[$postImage]["tmp_name"]);
+                        switch ($filetype){
+                            case "image/png" : $source = imagecreatefrompng( $_FILES[$postImage]["tmp_name"]);
+                            break;
+
+                            case "image/jpeg" : $source = imagecreatefromjpeg( $_FILES[$postImage]["tmp_name"]);
+                            break;
+
+                            case "image/gif" : $source = imagecreatefromgif( $_FILES[$postImage]["tmp_name"]);
+                            break;
+                        }
+                        
+                        //$source = imagecreatefromjpeg( $_FILES[$postImage]["tmp_name"]);
                         imagecopyresampled($thumb, $source, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
                         imagejpeg($thumb, $_FILES[$postImage]["tmp_name"]);
                     

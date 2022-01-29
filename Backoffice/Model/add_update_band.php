@@ -58,7 +58,7 @@ if(isset($_POST["id"])){
             $devFunction->deleteDirectory("../../assets/images/bands/".$entity->getSlug()."/".$check["imageBand"]);
         }
     
-        $devFunction->uploadPhoto($path,"imageBand",759,500);
+        $devFunction->uploadPhoto($path,"le-cepe-records-","imageBand",759,500);
         $updateInfo->update($entity); 
     }
     // Si aucune saisie pour photo
@@ -70,7 +70,7 @@ if(isset($_POST["id"])){
 // Creation d'une nouvelle ligne 
 else{
     
-    $devFunction->uploadPhoto($path,"imageBand",759,500);
+    $devFunction->uploadPhoto($path,"le-cepe-records-","imageBand",759,500);
     $insertInfo = new BandManager('bands');
     $insertInfo->create($entity);
 }

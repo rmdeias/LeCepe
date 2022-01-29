@@ -37,70 +37,34 @@
             
         </section>
 
-
-   
         <hr>
            
-           <section >
-            <h2>More Products from this Artist</h2>
+        <section >
+        <h2>More Products from this Artist</h2>
 
+        
             <div class="otherProducts">
-                <article class = "productCard">
-                    <a href="" ><img class="imgProduct" src="./assets/images/a0858355988_16.jpg"></a>
-                    <div class="description">
-                        <h1 class ="bandName"><a href="" class="band">Deedee & The Abracadabras</a></h1>
-                        <h2><a href="" class="title">Deedee & The Abracadabras</a></h2>
-                        <p>Release Date: 14/5/2021</p>
-                        <p>type: Vinyl</p>
-                        <p>Price: $40.00</p>
-                    </div>
-                </article>
-    
-                <article class = "productCard">
-                    <a href="" ><img class="imgProduct" src="./assets/images/a3872158123_16.jpg"></a>
-                    <div class="description">
-                        <h1 class ="bandName"><a href="" class="band">Deedee & The Abracadabras</a></h1>
-                        <h2><a href="" class="title">Deedee & The Abracadabras</a></h2>
-                        <p>Release Date: 14/5/2021</p>
-                        <p>type: Vinyl</p>
-                        <p>Price: $40.00</p>
-                    </div>
-                </article>
-    
-                <article class = "productCard">
-                    <a href="" ><img class="imgProduct" src="./assets/images/a0858355988_16.jpg"></a>
-                    <div class="description">
-                        <h1 class ="bandName"><a href="" class="band">Deedee & The Abracadabras</a></h1>
-                        <h2><a href="" class="title">Deedee & The Abracadabras</a></h2>
-                        <p>Release Date: 14/5/2021</p>
-                        <p>type: Vinyl</p>
-                        <p>Price: $40.00</p>
-                    </div>
-                </article>
-    
-                <article class = "productCard">
-                    <a href="" ><img class="imgProduct" src="./assets/images/a3872158123_16.jpg"></a>
-                    <div class="description">
-                        <h1 class ="bandName"><a href="" class="band">Deedee & The Abracadabras</a></h1>
-                        <h2><a href="" class="title">Deedee & The Abracadabras</a></h2>
-                        <p>Release Date: 14/5/2021</p>
-                        <p>type: Vinyl</p>
-                        <p>Price: $40.00</p>
-                    </div>
-                </article>
-                <article class = "productCard">
-                    <a href="" ><img class="imgProduct" src="./assets/images/a3872158123_16.jpg"></a>
-                    <div class="description">
-                        <h1 class ="bandName"><a href="./Deedee&TheAbracadabras.html" class="band">Deedee & The Abracadabras</a></h1>
-                        <h2><a href="" class="title">Deedee & The Abracadabras</a></h2>
-                        <p>Release Date: 14/5/2021</p>
-                        <p>type: Vinyl</p>
-                        <p>Price: $40.00</p>
-                    </div>
-                </article>
 
+                <?php foreach ($moreProducts as $moreProduct): ?>
+                    <article class = "productCard">
+                        <a href="Product&le_cepe_records_merch=<?= $moreProduct["id_band"]."-".$moreProduct["id"]."-".$moreProduct["bandSlug"]."-".$moreProduct["slug"] ?>" >
+                            <img class="img imgProduct" src="./assets/images/bands/<?= $moreProduct["bandSlug"]."/".$moreProduct["slug"]."/".$moreProduct["image"] ?>">
+                            <img class="imgAlt imgProduct cache" src="./assets/images/bands/<?= $moreProduct["bandSlug"]."/".$moreProduct["slug"]."/".$moreProduct["imageAlt"] ?>">
+                        </a>
+                        <div class="description">
+                            <h1 ><a class="band bandName" href="Band&le_cepe_records_artist=<?= $moreProduct["id_band"]."-".$moreProduct["bandSlug"] ?>" ><?= $moreProduct["name"] ?></a></h1>
+                            <h2 ><a class ="albumTitle" href="Product&le_cepe_records_merch=<?= $moreProduct["id_band"]."-".$moreProduct["id"]."-".$moreProduct["bandSlug"]."-".$moreProduct["slug"] ?>" ><?= $moreProduct["title"] ?></a></h2>
+                            
+                            <p>Release Date: <?= $moreProduct["dateSortie"] ?></p>
+                            <p>type: <?= $moreProduct["type"] ?></p>
+                            <p>Avail: <?= $moreProduct["dispo"] ?></p>
+                            <p>Price: $<?= $moreProduct["price"] ?></p>
+                        </div>
+                    </article>
+                <?php endforeach; ?>
+                
             </div>
-            
+
         </section>
     </div>
     </main>

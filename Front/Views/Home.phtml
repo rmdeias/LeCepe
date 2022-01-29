@@ -11,13 +11,13 @@
             <div class= "card">
             <?php foreach ($newReleases as $newRelease): ?>
                 <article class = "productCard">
-                    <a href="Product&name=<?= $newRelease["id_band"]."-".$newRelease["id"]."-".$newRelease["bandSlug"]."-".$newRelease["slug"] ?>" >
+                    <a href="Product&le_cepe_records_merch=<?= $newRelease["id_band"]."-".$newRelease["id"]."-".$newRelease["bandSlug"]."-".$newRelease["slug"] ?>" >
                         <img class="img imgProduct" src="./assets/images/bands/<?= $newRelease["bandSlug"]."/".$newRelease["slug"]."/".$newRelease["image"] ?>">
                         <img class="imgAlt imgProduct cache" src="./assets/images/bands/<?= $newRelease["bandSlug"]."/".$newRelease["slug"]."/".$newRelease["imageAlt"] ?>">
                     </a>
                     <div class="description">
-                        <h1 ><a class ="bandName" href="Band&name=<?= $newRelease["id_band"]."-".$newRelease["bandSlug"] ?>" class="band"><?= $newRelease["name"] ?></a></h1>
-                        <h2 ><a class ="albumTitle" href="Product&name=<?= $newRelease["id_band"]."-".$newRelease["id"]."-".$newRelease["bandSlug"]."-".$newRelease["slug"] ?>" ><?= $newRelease["title"] ?></a></h2>
+                        <h1 ><a class ="bandName" href="Band&le_cepe_records_artist=<?= $newRelease["id_band"]."-".$newRelease["bandSlug"] ?>" class="band"><?= $newRelease["name"] ?></a></h1>
+                        <h2 ><a class ="albumTitle" href="Product&le_cepe_records_merch=<?= $newRelease["id_band"]."-".$newRelease["id"]."-".$newRelease["bandSlug"]."-".$newRelease["slug"] ?>" ><?= $newRelease["title"] ?></a></h2>
                         <p>Release Date: <?= $newRelease["dateSortie"] ?></p>
                         <p>type: <?= $newRelease["type"] ?></p>
                         <p>Avail: <?= $newRelease["dispo"] ?></p>
@@ -37,13 +37,13 @@
             <div class= "card">
             <?php foreach ($products as $product): ?>
                 <article class = "productCard">
-                    <a href="Product&name=<?= $product["id_band"]."-".$product["id"]."-".$product["bandSlug"]."-".$product["slug"] ?>" >
+                    <a href="Product&le_cepe_records_merch=<?= $product["id_band"]."-".$product["id"]."-".$product["bandSlug"]."-".$product["slug"] ?>" >
                         <img class="img imgProduct" src="./assets/images/bands/<?= $product["bandSlug"]."/".$product["slug"]."/".$product["image"] ?>">
                         <img class="imgAlt imgProduct cache" src="./assets/images/bands/<?= $product["bandSlug"]."/".$product["slug"]."/".$product["imageAlt"] ?>">
                     </a>
                     <div class="description">
-                        <h1 ><a class="band bandName" href="Band&name=<?= $product["id_band"]."-".$product["bandSlug"] ?>" ><?= $product["name"] ?></a></h1>
-                        <h2 ><a class ="albumTitle" href="Product&name=<?= $product["id_band"]."-".$product["id"]."-".$product["bandSlug"]."-".$product["slug"] ?>" ><?= $product["title"] ?></a></h2>
+                        <h1 ><a class="band bandName" href="Band&le_cepe_records_artist=<?= $product["id_band"]."-".$product["bandSlug"] ?>" ><?= $product["name"] ?></a></h1>
+                        <h2 ><a class ="albumTitle" href="Product&le_cepe_records_merch=<?= $product["id_band"]."-".$product["id"]."-".$product["bandSlug"]."-".$product["slug"] ?>" ><?= $product["title"] ?></a></h2>
                         <p>Release Date: <?= $product["dateSortie"] ?></p>
                         <p>type: <?= $product["type"] ?></p>
                         <p>Avail: <?= $product["dispo"] ?></p>

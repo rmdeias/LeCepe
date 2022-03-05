@@ -9,13 +9,13 @@ const isFirefox = typeof InstallTrigger !== 'undefined';
 window.onscroll = function() {scrollFunction()};
 function scrollFunction() {
    
-    if(window.screen.width > 900){
+    if(window.screen.width >= 768){
         
       mybutton.classList.remove("sticky");
       logo.style.display = "flex";
       main[0].classList.remove("marginTopMain");
 
-      if (document.body.scrollTop > 310 || document.documentElement.scrollTop > 310 ) {
+      if (document.body.scrollTop >= logo.offsetHeight || document.documentElement.scrollTop >= logo.offsetHeight ) {
       
         logo.style.display = "none";
         mybutton.classList.add("sticky");
@@ -24,7 +24,6 @@ function scrollFunction() {
     
     }
 }
-
 /*********************************Change Image Product Hover*************************************************/
 function toObject(img, imgAlt) 
 {

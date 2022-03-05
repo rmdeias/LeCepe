@@ -3,54 +3,53 @@
         <div class="container">
 
             <section class ="allProducts">
-            <div>
-                <h1>LASTEST RELEASES</h1>
-                <hr>
-            </div>
+                <div>
+                    <h1>LASTEST RELEASES</h1>
+                    <hr>
+                </div>
 
-            <div class= "card">
-            <?php foreach ($newReleases as $newRelease): ?>
-                <article class = "productCard">
-                    <a href="Product&name=<?= $newRelease["id_band"]."-".$newRelease["id"]."-".$newRelease["bandSlug"]."-".$newRelease["slug"] ?>" >
-                        <img class="img imgProduct" src="./assets/images/bands/<?= $newRelease["bandSlug"]."/".$newRelease["slug"]."/".$newRelease["image"] ?>">
-                        <img class="imgAlt imgProduct cache" src="./assets/images/bands/<?= $newRelease["bandSlug"]."/".$newRelease["slug"]."/".$newRelease["imageAlt"] ?>">
-                    </a>
-                    <div class="description">
-                        <h2 ><a class ="albumTitle" href="Product&name=<?= $newRelease["id_band"]."-".$newRelease["id"]."-".$newRelease["bandSlug"]."-".$newRelease["slug"] ?>" ><?= $newRelease["title"] ?></a></h2>
-                       
-                        <p>type: <?= $newRelease["type"] ?></p>
-                        <p>Avail: <?= $newRelease["dispo"] ?></p>
-                        <p>Price: $<?= $newRelease["price"] ?></p>
-                    </div>
-                </article>
-                <?php endforeach; ?> 
-            </div>
+                <div class= "card">
+                    <?php foreach ($newReleases as $newRelease): ?>
+                        <article class = "productCard">
+                            <a href="Product&le_cepe_records_merch=<?= $newRelease["id_band"]."-".$newRelease["id"]."-".$newRelease["bandSlug"]."-".$newRelease["slug"] ?>" >
+                                <img class="img imgProduct" src="./assets/images/bands/<?= $newRelease["bandSlug"]."/".$newRelease["slug"]."/".$newRelease["image"] ?>">
+                                <img class="imgAlt imgProduct cache" src="./assets/images/bands/<?= $newRelease["bandSlug"]."/".$newRelease["slug"]."/".$newRelease["imageAlt"] ?>">
+                            </a>
+                            <div class="description">
+                                <h2 ><a class ="albumTitle" href="Product&le_cepe_records_merch=<?= $newRelease["id_band"]."-".$newRelease["id"]."-".$newRelease["bandSlug"]."-".$newRelease["slug"] ?>" ><?= $newRelease["title"] ?></a></h2>
+                            
+                                <p>type: <?= $newRelease["type"] ?></p>
+                                <p>Avail: <?= $newRelease["dispo"] ?></p>
+                                <p>Price: $<?= $newRelease["price"] ?></p>
+                            </div>
+                        </article>
+                    <?php endforeach; ?> 
+                </div>
             </section>
 
             <section class ="allProducts">
-            <div>
-                <h1>RELEASES</h1>
-                <hr>
-            </div>
+                <div>
+                    <h1>RELEASES</h1>
+                    <hr>
+                </div>
 
-            <div class= "card">
-            <?php foreach ($products as $product): ?>
-                <article class = "productCard">
-                    <a href="Product&name=<?= $product["id_band"]."-".$product["id"]."-".$product["bandSlug"]."-".$product["slug"] ?>" >
-                        <img class="img imgProduct" src="./assets/images/bands/<?= $product["bandSlug"]."/".$product["slug"]."/".$product["image"] ?>">
-                        <img class="imgAlt imgProduct cache" src="./assets/images/bands/<?= $product["bandSlug"]."/".$product["slug"]."/".$product["imageAlt"] ?>">
-                    </a>
-                    <div class="description">
-                        <h2 ><a class ="albumTitle" href="Product&name=<?= $product["id_band"]."-".$product["id"]."-".$product["bandSlug"]."-".$product["slug"] ?>" ><?= $product["title"] ?></a></h2>
-                        <p>type: <?= $product["type"] ?></p>
-                        <p>Avail: <?= $product["dispo"] ?></p>
-                        <p>Price: $<?= $product["price"] ?></p>
-                    </div>
-                </article>
-                <?php endforeach; ?> 
-            </div>
+                <div class= "card">
+                    <?php foreach ($products as $product): ?>
+                        <article class = "productCard">
+                            <a href="Product&le_cepe_records_merch=<?= $product["id_band"]."-".$product["id"]."-".$product["bandSlug"]."-".$product["slug"] ?>" >
+                                <img class="img imgProduct" src="./assets/images/bands/<?= $product["bandSlug"]."/".$product["slug"]."/".$product["image"] ?>">
+                                <img class="imgAlt imgProduct cache" src="./assets/images/bands/<?= $product["bandSlug"]."/".$product["slug"]."/".$product["imageAlt"] ?>">
+                            </a>
+                            <div class="description">
+                                <h2 ><a class ="albumTitle" href="Product&le_cepe_records_merch=<?= $product["id_band"]."-".$product["id"]."-".$product["bandSlug"]."-".$product["slug"] ?>" ><?= $product["title"] ?></a></h2>
+                                <p>type: <?= $product["type"] ?></p>
+                                <p>Avail: <?= $product["dispo"] ?></p>
+                                <p>Price: $<?= $product["price"] ?></p>
+                            </div>
+                        </article>
+                    <?php endforeach; ?> 
+                </div>
             </section>
-          
         </div>
     </main>
 

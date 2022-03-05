@@ -43,11 +43,12 @@ ul{
     z-index: 2;
     right: 0;
     width: 200px;
-    height: 50%;
+    height: 270px;
     transition: all 0.4s ease 0s;
     transform: translateX(250px);
     background: rgba(255, 171, 0, 0.9);
     border-radius: 10px;
+    
   }
   
   .sidebar-nav {
@@ -198,11 +199,12 @@ header{
     padding: 10px;
 }
 
-.allProducts .card h1{
+.allProducts .card h1, .otherProducts .productCard h1, .allProducts .card h2 , .otherProducts .productCard h2 {
     font-size:unset;
     margin: 0px;
     margin-bottom: 5px;
 }
+
 
 .bandName:hover{
     color: #04a8ff;
@@ -213,12 +215,7 @@ header{
    
 }
 
-.allProducts .card h2{
-    font-size:unset;
-    
-    margin-top: 0px;
-    margin-bottom: 3px;
-}
+
 
 .productCard{
     display: flex;
@@ -387,26 +384,37 @@ header{
     .logoimg{ 
         width: 100%;
     }
-}
-
-@media screen and (min-width:768px){
-    .productCard{
-        max-width: none;
-    }
-  
     .allProducts .card , .allBandsArticle, .otherProducts{
         display: flex;
         flex-direction: row;
         flex-wrap: wrap
+    }
+    .productCard {  
+        flex-basis: 34.4%; 
+    }
+}
+
+@media screen and (min-width:768px){
+    .menu-toggle{
+        display: none;
+    }
+
+    #myBtn{
+       display: flex;
+        
+    }
+    .productCard{
+        max-width: none;
+    }
+  
+    .productCard {  
+        flex-basis: 23%; 
     }
     
     .allBandsArticle{
         justify-content:space-between;
         padding-left: 20px;
         padding-right: 20px;
-    }
-    .productCard {  
-        flex-basis: 23%; 
     }
 
     .artistArticle {
@@ -440,14 +448,7 @@ header{
         max-width: 360px;
     }
 
-    .menu-toggle{
-        display: none;
-    }
-
-    #myBtn{
-       display: flex;
-        
-    }
+    
     .sticky{
         
         position: fixed;
@@ -466,7 +467,6 @@ header{
    .logoimg{ 
         width:100%;
     }
-  
 
     .container{
         margin-top: 150px;

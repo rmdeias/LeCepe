@@ -39,33 +39,66 @@
 
         <hr>
            
-        <section >
-        <h2>More Products from this Artist</h2>
+        <section>
+            
+            <h2>
+                <?php if(!empty($moreProducts)): 
+                    echo("More Products from ". $moreProducts[0]["name"]);
+                else: 
+                    echo( "More Products from Le Cèpe Records");
+                endif; ?>
+            </h2>
 
-        
             <div class="otherProducts">
 
-                <?php foreach ($moreProducts as $moreProduct): ?>
-                    <article class = "productCard">
-                        <a href="Product&le_cepe_records_merch=<?= $moreProduct["id_band"]."-".$moreProduct["id"]."-".$moreProduct["bandSlug"]."-".$moreProduct["slug"] ?>" >
-                            <img class="img imgProduct" src="./assets/images/bands/<?= $moreProduct["bandSlug"]."/".$moreProduct["slug"]."/".$moreProduct["image"] ?>">
-                            <img class="imgAlt imgProduct cache" src="./assets/images/bands/<?= $moreProduct["bandSlug"]."/".$moreProduct["slug"]."/".$moreProduct["imageAlt"] ?>">
-                        </a>
-                        <div class="description">
-                            <h1 ><a class="band bandName" href="Band&le_cepe_records_artist=<?= $moreProduct["id_band"]."-".$moreProduct["bandSlug"] ?>" ><?= $moreProduct["name"] ?></a></h1>
-                            <h2 ><a class ="albumTitle" href="Product&le_cepe_records_merch=<?= $moreProduct["id_band"]."-".$moreProduct["id"]."-".$moreProduct["bandSlug"]."-".$moreProduct["slug"] ?>" ><?= $moreProduct["title"] ?></a></h2>
+                <?php if(!empty($moreProducts)): 
+                    foreach ($moreProducts as $moreProduct): ?>
+                        <article class = "productCard">
+                            <a href="Product&le_cepe_records_merch=<?= $moreProduct["id_band"]."-".$moreProduct["id"]."-".$moreProduct["bandSlug"]."-".$moreProduct["slug"] ?>" >
+                                <img class="img imgProduct" src="./assets/images/bands/<?= $moreProduct["bandSlug"]."/".$moreProduct["slug"]."/".$moreProduct["image"] ?>">
+                                <img class="imgAlt imgProduct cache" src="./assets/images/bands/<?= $moreProduct["bandSlug"]."/".$moreProduct["slug"]."/".$moreProduct["imageAlt"] ?>">
+                            </a>
+                            <div class="description">
+                                <?php if ($moreProduct["name"] != "Le Cepe Records Merch"): ?>
+                                    <h1>
+                                        <a class="band bandName" href="Band&le_cepe_records_artist=<?= $moreProduct["id_band"]."-".$moreProduct["bandSlug"] ?>" ><?= $moreProduct["name"] ?></a>
+                                    </h1>
+                                <?php endif ?>
+
+                                <h2 ><a class ="albumTitle" href="Product&le_cepe_records_merch=<?= $moreProduct["id_band"]."-".$moreProduct["id"]."-".$moreProduct["bandSlug"]."-".$moreProduct["slug"] ?>" ><?= $moreProduct["title"] ?></a></h2>
+                                
+                                <?php if ($moreProduct["name"] != "Le Cepe Records Merch"): ?>
+                                    <p>Release Date: <?= $moreProduct["dateSortie"] ?></p>
+                                <?php endif ?>
+
+                                <p>type: <?= $moreProduct["type"] ?></p>
+                                <p>Avail: <?= $moreProduct["dispo"] ?></p>
+                                <p>Price: $<?= $moreProduct["price"] ?></p>
+                            </div>
+                        </article>
+                    <?php endforeach;
+                else:
+                    foreach ($merchs as $merch): ?>
+                        <article class = "productCard">
+                            <a href="Product&le_cepe_records_merch=<?= $merch["id_band"]."-".$merch["id"]."-".$merch["bandSlug"]."-".$merch["slug"] ?>" >
+                                <img class="img imgProduct" src="./assets/images/bands/<?= $merch["bandSlug"]."/".$merch["slug"]."/".$merch["image"] ?>">
+                                <img class="imgAlt imgProduct cache" src="./assets/images/bands/<?= $merch["bandSlug"]."/".$merch["slug"]."/".$merch["imageAlt"] ?>">
+                            </a>
+                            <div class="description">
                             
-                            <p>Release Date: <?= $moreProduct["dateSortie"] ?></p>
-                            <p>type: <?= $moreProduct["type"] ?></p>
-                            <p>Avail: <?= $moreProduct["dispo"] ?></p>
-                            <p>Price: $<?= $moreProduct["price"] ?></p>
-                        </div>
-                    </article>
-                <?php endforeach; ?>
-                
+                                <h2 ><a href="Product&le_cepe_records_merch=<?= $merch["id_band"]."-".$merch["id"]."-".$merch["bandSlug"]."-".$merch["slug"] ?>" ><?= $merch["title"] ?></a></h2>
+                                <p>type: <?= $merch["type"] ?></p>
+                                <p>Avail: <?= $merch["dispo"] ?></p>
+                                <p>Price: $<?= $merch["price"] ?></p>
+                            </div>
+                        </article>
+                    <?php endforeach;
+                endif ?>
+          
             </div>
 
         </section>
     </div>
+    
     </main>
 <?php $content = ob_get_clean(); ?>
